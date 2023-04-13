@@ -8,7 +8,10 @@ import { CatalogoComponent } from './content/catalogo/catalogo.component';
 import { GorrasComponent } from './content/catalogo/gorras/gorras.component';
 import { SudaderasComponent } from './content/catalogo/sudaderas/sudaderas.component';
 import { ContactoComponent } from './content/contacto/contacto.component';
+import { CuentaComponent } from './content/cuenta/cuenta.component';
+import { PerfilComponent } from './content/cuenta/perfil/perfil.component';
 import { InicioComponent } from './content/inicio/inicio.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
 
@@ -49,6 +52,17 @@ const routes: Routes = [
       {
         path : 'registro',
         component : RegistroComponent
+      }
+    ]
+  },
+  {
+    path : 'cuenta',
+    component : CuentaComponent,
+    canActivate : [LoginGuard],
+    children : [
+      {
+        path : 'perfil',
+        component : PerfilComponent
       }
     ]
   }

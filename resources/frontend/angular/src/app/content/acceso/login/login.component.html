@@ -1,14 +1,17 @@
-<form class="px-3 d-flex flex-column">
+<form class="px-3 d-flex flex-column" [formGroup]="usuarioFormLogin" (ngSubmit)="login()">
     <div class="form-group">
-      <label for="exampleInputEmail1">Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduce tu email">
+      <label for="emailInput">Email</label>
+      <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Introduce tu email" formControlName="email">
+      <small class="text-danger" *ngIf="usuarioFormLogin.get('email')?.hasError('required')">Introduce tu email.</small>
+      <small class="text-danger" *ngIf="usuarioFormLogin.get('email')?.hasError('email')">Introduce un formato de email correcto.</small>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Contraseña</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+      <label for="passwordInput">Contraseña</label>
+      <input type="password" class="form-control" id="passwordInput" placeholder="Contraseña" formControlName="password">
+      <small class="text-danger" *ngIf="usuarioFormLogin.get('password')?.hasError('required')">Introduce tu contraseña.</small>
     </div>
     <div class="form-group">
-      <small class="form-check-label" for="exampleCheck1">¿ No tienes cuenta ?<a href="/acceso/registro"> Registrate</a></small>
+      <small class="form-check-label" for="exampleCheck1">¿ No tienes cuenta ?<a class="text-secondary" href="/acceso/registro"> Registrate</a></small>
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button [ngClass]="{'disabled' : !this.usuarioFormLogin.valid , 'dark' : !this.usuarioFormLogin.valid}" type="submit" class="btn btn-secondary">Login</button>
 </form>

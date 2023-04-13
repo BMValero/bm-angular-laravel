@@ -1,36 +1,70 @@
-<form class="px-3 d-flex flex-column">
+<form class="px-3 d-flex flex-column" [formGroup]="usuarioFormRegistro" (ngSubmit)="registro()">
+    <h2 class="border-bottom mb-3">Datos de facturación y entrega.</h2>
     <div class="row">
         <div class="col">
             <div class="form-group">
                 <label for="inputNombre">Nombre</label>
-                <input type="text" class="form-control" id="inputNombre" aria-describedby="emailHelp" placeholder="Introduce tu nombre">
+                <input type="text" class="form-control" id="inputNombre" aria-describedby="emailHelp" placeholder="Nombre" formControlName="nombre">
+                <small class="text-danger" *ngIf="usuarioFormRegistro.get('nombre')?.hasError('required')">Introduce tu nombre.</small>
             </div>
             <div class="form-group">
                 <label for="inputApellidos">Apellidos</label>
-                <input type="text" class="form-control" id="inputApellidos" aria-describedby="emailHelp" placeholder="Introduce tus apellidos">
-            </div>
-            <div class="form-group">
-              <label for="inputDireccion">Dirección</label>
-              <input type="text" class="form-control" id="inputDireccion" aria-describedby="emailHelp" placeholder="Introduce tu dirección">
+                <input type="text" class="form-control" id="inputApellidos" aria-describedby="emailHelp" placeholder="Apellidos" formControlName="apellidos">
+                <small class="text-danger" *ngIf="usuarioFormRegistro.get('apellidos')?.hasError('required')">Introduce tus apellidos.</small>
             </div>
             <div class="form-group">
                 <label for="inputTelefono">Teléfono</label>
-                <input type="text" class="form-control" id="inputTelefono" aria-describedby="emailHelp" placeholder="Introduce tu telefono">
+                <div class="d-flex justify-content-center align-items-center">
+                    <span class="mr-2">+34</span>
+                    <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 9);" class="form-control" id="inputTelefono" aria-describedby="emailHelp" placeholder="Telefono" formControlName="telefono">
+                </div>
+                <small class="text-danger" *ngIf="usuarioFormRegistro.get('telefono')?.hasError('required')">Introduce tu telefono.</small>
+                <small class="text-danger" *ngIf="usuarioFormRegistro.get('telefono')?.hasError('pattern')">Introduce un número de teléfono válido.</small>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-flex">
+                <div class="form-group">
+                    <label for="inputCiudad">Ciudad</label>
+                    <input type="text" class="form-control" id="inputCiudad" aria-describedby="emailHelp" placeholder="Ciudad" formControlName="ciudad">
+                    <small class="text-danger" *ngIf="usuarioFormRegistro.get('ciudad')?.hasError('required')">Introduce tu ciudad.</small>
+                </div>
+                <div class="form-group col-5">
+                    <label for="inputCp">CP</label>
+                    <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 5);" class="form-control" id="inputCp" aria-describedby="emailHelp" placeholder="CP" formControlName="cp">
+                    <small class="text-danger" *ngIf="usuarioFormRegistro.get('cp')?.hasError('required')">Introduce tu código postal.</small>
+                    <small class="text-danger" *ngIf="usuarioFormRegistro.get('cp')?.hasError('pattern')">Introduce un código postal válido.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDireccion">Dirección</label>
+                <input type="text" class="form-control" id="inputDireccion" aria-describedby="emailHelp" placeholder="Dirección" formControlName="direccion">
+                <small class="text-danger" *ngIf="usuarioFormRegistro.get('direccion')?.hasError('required')">Introduce tu direccion.</small>
+            </div>
+        </div>
+    </div>
+    <h2 class="border-bottom mb-3">Datos de registro</h2>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Introduce tu email" formControlName="email">
+                <small class="text-danger" *ngIf="usuarioFormRegistro.get('email')?.hasError('required')">Introduce tu email.</small>
+                <small class="text-danger" *ngIf="usuarioFormRegistro.get('email')?.hasError('email')">Introduce un formato de email correcto.</small>
             </div>
         </div>
         <div class="col">
             <div class="form-group">
-                <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Introduce tu email">
-            </div>
-            <div class="form-group">
-              <label for="inputPassword">Contraseña</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
-            </div>
-            <div class="form-group">
-              <small class="form-check-label" for="exampleCheck1">¿ Ya tienes cuenta ?<a href="/acceso/login"> Login</a></small>
-            </div>
+                <label for="inputPassword">Contraseña</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña" formControlName="password">
+                <small class="text-danger" *ngIf="usuarioFormRegistro.get('password')?.hasError('required')">Introduce tu contraseña.</small>
+                </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Registrate</button>
+    <div class="row">
+        <div class="form-group col">
+            <small class="form-check-label" for="exampleCheck1">¿ Ya tienes cuenta ?<a class="text-secondary" href="/acceso/login"> Login</a></small>
+        </div>
+    </div>
+    <button [ngClass]="{'disabled' : !this.usuarioFormRegistro.valid , 'dark' : !this.usuarioFormRegistro.valid}" type="submit" class="btn btn-secondary">Registrate</button>
 </form>

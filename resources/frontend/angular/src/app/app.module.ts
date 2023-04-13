@@ -18,6 +18,9 @@ import { LoginDropdownComponent } from './header/login-dropdown/login-dropdown.c
 import { AccesoComponent } from './content/acceso/acceso.component';
 import { LoginComponent } from './content/acceso/login/login.component';
 import { RegistroComponent } from './content/acceso/registro/registro.component';
+import { PerfilComponent } from './content/cuenta/perfil/perfil.component';
+import { CuentaComponent } from './content/cuenta/cuenta.component';
+import { CuentaDropdownComponent } from './header/cuenta-dropdown/cuenta-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { RegistroComponent } from './content/acceso/registro/registro.component'
     LoginDropdownComponent,
     AccesoComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    PerfilComponent,
+    CuentaComponent,
+    CuentaDropdownComponent
   ],
   imports: [
     BrowserModule,

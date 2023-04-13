@@ -17,17 +17,27 @@ class UsuarioSeeder extends Seeder
         $usuario = new Usuario();
         $usuario->id = Str::uuid();
         $usuario->nombre = "Daniel";
+        $usuario->apellidos = "Valero Peña";
+        $usuario->ciudad = "Benidorm";
+        $usuario->cp = "23123";
+        $usuario->direccion_entrega = "Calle falsa 123";
+        $usuario->direccion_facturacion = "Calle falsa 123";
         $usuario->password = bcrypt("1212");
         $usuario->email = "dani@email.com";
-        $usuario->telefono = "4444";
+        $usuario->telefono = "444312314";
         $usuario->save();
 
         $usuario = new Usuario();
         $usuario->id = Str::uuid();
         $usuario->nombre = "María";
+        $usuario->apellidos = "Rodríguez García";
+        $usuario->ciudad = "Madrid";
+        $usuario->cp = "44543";
+        $usuario->direccion_entrega = "Calle asdasd 23434";
+        $usuario->direccion_facturacion = "Calle asdasd 23434";
         $usuario->password = bcrypt("2323");
         $usuario->email = "maría@email.com";
-        $usuario->telefono = "55555";
+        $usuario->telefono = "555545635";
         $usuario->save();
     }
 }

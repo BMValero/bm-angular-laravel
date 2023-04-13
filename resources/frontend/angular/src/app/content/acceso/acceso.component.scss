@@ -2,3 +2,10 @@
     flex-grow: 1;
     min-height: calc(100vh - 239px);
 }
+
+.slider {
+    height: 75vh;
+    background-image: url("https://picsum.photos/1080/2440");
+    background-size: cover;
+    background-position: center;
+}

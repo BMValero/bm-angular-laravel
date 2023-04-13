@@ -15,9 +15,12 @@ return new class extends Migration
 
             $table->uuid('id')->primary();
             $table->string('nombre');
+            $table->string('apellidos');
             $table->string('password');
             $table->string('email')->unique();
             $table->integer('telefono');
+            $table->string('ciudad')->nullable();
+            $table->integer('cp')->nullable();
             $table->string('direccion_entrega')->nullable();
             $table->string('direccion_facturacion')->nullable();
             $table->timestamps();

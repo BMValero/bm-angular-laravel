@@ -1,3 +1,12 @@
 form{
-    width: 500px;
+    width: 600px;
+}
+
+input:focus{
+    border-color: transparent;
+    box-shadow: 0 0 0 0.2rem rgba(131, 130, 130, 0.281);
+}
+
+.disabled{
+    box-shadow: none;
 }

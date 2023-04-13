@@ -1,4 +1,13 @@
 .footer {
+    position : fixed;
+    bottom : 0;
+    height: 15%;
     background-color: #111;
     color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+  .footer{
+    position: inherit;
   }
+}
