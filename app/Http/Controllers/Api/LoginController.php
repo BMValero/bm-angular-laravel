@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Ramsey\Uuid\Uuid;
 use App\Models\Usuario;
+use App\Models\Token;
 
 class LoginController extends Controller
 {
@@ -36,11 +39,19 @@ class LoginController extends Controller
 
         } else {
 
+            $idToken = Uuid::uuid4()->toString();
+
+            $token = new Token();
+            $token->id = $idToken;
+            $token->usuario_id = $usuario->id;
+            $token->save();
+
+
             return response()->json([
 
                 'status' => 'ok',
-                'token' => $usuario->createToken($usuario->email)->plainTextToken,
-                'nombre' => $usuario->nombre
+                'token' => $idToken,
+                'nombre' => $usuario->nombre,
             ]);
         }
     }

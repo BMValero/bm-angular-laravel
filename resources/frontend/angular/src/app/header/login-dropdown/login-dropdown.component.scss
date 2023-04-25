@@ -1,7 +1,13 @@
 .desplegable{
+    margin-top: 10px;
     width: 300px;
     left:-215px;
 }
+
+.desplegable-login{
+    padding-right:8px;
+}
+
 
 input:focus{
     border-color: transparent;
@@ -10,4 +16,8 @@ input:focus{
 
 .disabled{
     box-shadow: none;
+}
+
+@media (max-width: 767px) {
+    
 }

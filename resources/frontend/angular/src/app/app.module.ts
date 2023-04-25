@@ -21,6 +21,10 @@ import { RegistroComponent } from './content/acceso/registro/registro.component'
 import { PerfilComponent } from './content/cuenta/perfil/perfil.component';
 import { CuentaComponent } from './content/cuenta/cuenta.component';
 import { CuentaDropdownComponent } from './header/cuenta-dropdown/cuenta-dropdown.component';
+import { PedidosComponent } from './content/cuenta/pedidos/pedidos.component';
+import { CredencialesComponent } from './content/cuenta/perfil/credenciales/credenciales.component';
+import { EnvioComponent } from './content/cuenta/perfil/envio/envio.component';
+import { FacturacionComponent } from './content/cuenta/perfil/facturacion/facturacion.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { CuentaDropdownComponent } from './header/cuenta-dropdown/cuenta-dropdow
     RegistroComponent,
     PerfilComponent,
     CuentaComponent,
-    CuentaDropdownComponent
+    CuentaDropdownComponent,
+    PedidosComponent,
+    CredencialesComponent,
+    EnvioComponent,
+    FacturacionComponent
   ],
   imports: [
     BrowserModule,

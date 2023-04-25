@@ -10,3 +10,18 @@ input:focus{
 .disabled{
     box-shadow: none;
 }
+
+.boton::before{
+    content: "Registrate";
+}
+
+.disabled::before{
+    content: "Rellena los campos para continuar.";
+}
+
+
+
+.pastilla-registro{
+    background-color: rgba(231, 231, 231, 0.384);
+    box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.2);
+}

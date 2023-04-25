@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\RegistroController;
+use App\Http\Controllers\Api\PedidosController;
+use App\Http\Controllers\Api\ModificarDatosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('login', LoginController::class);
 Route::apiResource('registro', RegistroController::class);
+Route::controller(PedidosController::class)->group(function(){
+    Route::get('/pedidos' , 'index')->middleware('verificar-admin');
+    Route::get('/pedidos/{token}' , 'show')->middleware('verificar-cliente','verificar-pertenencia-pedidos-cliente');
+    Route::get('/pedidos/pedido/{id}' , 'fichaPedido')->middleware('verificar-cliente', 'verificar-pedido-cliente');
+});
+Route::controller(ModificarDatosController::class)->group(function(){
+    Route::get('/datos/usuarios' ,'index')->middleware('verificar-admin');
+    Route::get('/datos/usuarios/{token}' , 'show')->middleware('verificar-cliente','verificar-pertenencia-datos-cliente');
+    Route::put('/datos/usuarios/modificar' , 'update')->middleware('verificar-admin');
+    Route::put('/datos/usuarios/modificar/{token}', 'modificarDatos')->middleware('verificar-cliente' , 'verificar-pertenencia-modificar-datos-cliente');
+});

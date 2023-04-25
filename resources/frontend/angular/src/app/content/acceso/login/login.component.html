@@ -1,4 +1,4 @@
-<form class="px-3 d-flex flex-column" [formGroup]="usuarioFormLogin" (ngSubmit)="login()">
+<form class="p-3 d-flex flex-column pastilla-login rounded border" [formGroup]="usuarioFormLogin" (ngSubmit)="login()">
     <div class="form-group">
       <label for="emailInput">Email</label>
       <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Introduce tu email" formControlName="email">
@@ -13,5 +13,5 @@
     <div class="form-group">
       <small class="form-check-label" for="exampleCheck1">¿ No tienes cuenta ?<a class="text-secondary" href="/acceso/registro"> Registrate</a></small>
     </div>
-    <button [ngClass]="{'disabled' : !this.usuarioFormLogin.valid , 'dark' : !this.usuarioFormLogin.valid}" type="submit" class="btn btn-secondary">Login</button>
+    <button [ngClass]="{'disabled' : !this.usuarioFormLogin.valid , 'dark' : !this.usuarioFormLogin.valid}" type="submit" class="btn btn-secondary boton"></button>
 </form>

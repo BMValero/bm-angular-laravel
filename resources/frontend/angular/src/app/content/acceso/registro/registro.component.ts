@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
 import { LocationStrategy  } from '@angular/common';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-registro',
@@ -15,7 +15,7 @@ export class RegistroComponent {
   title = "";
   respuesta : any;
 
-  constructor(private loginService : LoginService , private fb : FormBuilder , private router : Router , private locationStrategy : LocationStrategy){
+  constructor(private apiService : ApiService , private fb : FormBuilder , private router : Router , private locationStrategy : LocationStrategy){
 
     this.usuarioFormRegistro = this.fb.group({
 
@@ -56,7 +56,7 @@ export class RegistroComponent {
 
       }
 
-      this.loginService.registrarUsuario(credenciales).subscribe(res => {
+      this.apiService.registrarUsuario(credenciales).subscribe(res => {
 
         this.respuesta = res;
 
@@ -86,7 +86,7 @@ export class RegistroComponent {
 
       }
 
-      this.loginService.obtenerTokenLogin(credenciales).subscribe(res => {
+      this.apiService.obtenerTokenLogin(credenciales).subscribe(res => {
 
         this.respuesta = res;
 

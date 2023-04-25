@@ -23,6 +23,8 @@ export class CuentaDropdownComponent {
 
   logOut(){
 
+    //TODO : BORRAR EL TOKEN DE LA BASE DE DATOS
+
     localStorage.removeItem("token");
 
     this.router.navigate(['/'])

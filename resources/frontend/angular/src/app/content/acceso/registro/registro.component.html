@@ -1,5 +1,5 @@
-<form class="px-3 d-flex flex-column" [formGroup]="usuarioFormRegistro" (ngSubmit)="registro()">
-    <h2 class="border-bottom mb-3">Datos de facturación y entrega.</h2>
+<form class="p-3 d-flex flex-column border rounded pastilla-registro" [formGroup]="usuarioFormRegistro" (ngSubmit)="registro()">
+    <h2 class="border-bottom pb-2 mb-3">Datos de facturación y entrega.</h2>
     <div class="row">
         <div class="col">
             <div class="form-group">
@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-    <h2 class="border-bottom mb-3">Datos de registro</h2>
+    <h2 class="border-bottom mb-3 pb-2">Datos de registro</h2>
     <div class="row">
         <div class="col">
             <div class="form-group">
@@ -66,5 +66,5 @@
             <small class="form-check-label" for="exampleCheck1">¿ Ya tienes cuenta ?<a class="text-secondary" href="/acceso/login"> Login</a></small>
         </div>
     </div>
-    <button [ngClass]="{'disabled' : !this.usuarioFormRegistro.valid , 'dark' : !this.usuarioFormRegistro.valid}" type="submit" class="btn btn-secondary">Registrate</button>
+    <button [ngClass]="{'disabled' : !this.usuarioFormRegistro.valid , 'dark' : !this.usuarioFormRegistro.valid}" type="submit" class="btn btn-secondary boton"></button>
 </form>

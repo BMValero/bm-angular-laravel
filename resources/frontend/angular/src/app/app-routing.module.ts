@@ -12,6 +12,11 @@ import { CuentaComponent } from './content/cuenta/cuenta.component';
 import { PerfilComponent } from './content/cuenta/perfil/perfil.component';
 import { InicioComponent } from './content/inicio/inicio.component';
 import { LoginGuard } from './guards/login.guard';
+import { PedidosComponent } from './content/cuenta/pedidos/pedidos.component';
+import { CredencialesComponent } from './content/cuenta/perfil/credenciales/credenciales.component';
+import { EnvioComponent } from './content/cuenta/perfil/envio/envio.component';
+import { FactoryTarget } from '@angular/compiler';
+import { FacturacionComponent } from './content/cuenta/perfil/facturacion/facturacion.component';
 
 const routes: Routes = [
 
@@ -62,7 +67,25 @@ const routes: Routes = [
     children : [
       {
         path : 'perfil',
-        component : PerfilComponent
+        component : PerfilComponent,
+        children : [
+          {
+            path : 'credenciales',
+            component : CredencialesComponent
+          },
+          {
+            path : 'envio',
+            component : EnvioComponent
+          },
+          {
+            path : 'facturacion',
+            component : FacturacionComponent
+          }
+        ]
+      },
+      {
+        path : 'pedidos',
+        component : PedidosComponent
       }
     ]
   }

@@ -1,1 +1,18 @@
-<p>perfil works!</p>
+<!-- TODO : HACER RESPONSIVE DE LAS COLUMNAS -->
+<div class="perfil mt-2">
+    <div class="container">
+        <h1 class="border-bottom">Perfil</h1>
+        <div class="col d-flex justify-content-center align-items-start border rounded m-4 p-4">
+            <div class="col">
+                <div class="list-group">
+                    <a href="cuenta/perfil/credenciales" class="list-group-item list-group-item-action">Datos de acceso</a>
+                    <a href="cuenta/perfil/envio" class="list-group-item list-group-item-action">Datos de envío</a>
+                    <a href="cuenta/perfil/facturacion" class="list-group-item list-group-item-action">Datos de facturación</a>
+                </div>
+            </div>
+            <div class="col-8 border">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

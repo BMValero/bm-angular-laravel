@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
 import { LocationStrategy  } from '@angular/common';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit{
   title = "";
   respuesta : any;
 
-  constructor(private loginService : LoginService , private fb : FormBuilder , private router : Router , private locationStrategy : LocationStrategy ){
+  constructor(private apiService : ApiService , private fb : FormBuilder , private router : Router , private locationStrategy : LocationStrategy ){
 
     this.usuarioFormLogin = this.fb.group({
 
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit{
 
       }
 
-      this.loginService.obtenerTokenLogin(credenciales).subscribe(res => {
+      this.apiService.obtenerTokenLogin(credenciales).subscribe(res => {
 
         this.respuesta = res;
 
@@ -46,11 +46,14 @@ export class LoginComponent implements OnInit{
 
           localStorage.setItem("token", this.respuesta.token);
           localStorage.setItem("nombre", this.respuesta.nombre);
+
           setTimeout(() => {
             location.reload();
           }, 100);
 
           this.router.navigate(['/'])
+
+
 
         } else if (this.respuesta.status == "error") {
           //TODO CREAR NOTIFICACIÓN SLIDE DE USUARIO O CONTRASEÑA INCORRECTOS

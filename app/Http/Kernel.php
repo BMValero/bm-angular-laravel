@@ -45,6 +45,16 @@ class Kernel extends HttpKernel
         ],
     ];
 
+    protected $routeMiddleware = [
+        'verificar-admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'verificar-cliente' => \App\Http\Middleware\ClienteMiddleware::class,
+        'verificar-pedido-cliente' => \App\Http\Middleware\VerificarPedidoMiddleware::class,
+        'verificar-pertenencia-pedidos-cliente' => \App\Http\Middleware\VerificarPertenenciaPedidosMiddleware::class,
+        'verificar-pertenencia-datos-cliente' => \App\Http\Middleware\VerificarPertenenciaDatosMiddleware::class,
+        'verificar-pertenencia-modificar-datos-cliente' => \App\Http\Middleware\VerificarPertenenciaModificarDatosMiddleware::class
+
+    ];
+
     /**
      * The application's middleware aliases.
      *
