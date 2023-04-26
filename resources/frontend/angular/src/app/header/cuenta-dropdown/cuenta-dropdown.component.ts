@@ -27,6 +27,14 @@ export class CuentaDropdownComponent {
 
     localStorage.removeItem("token");
 
+    const controlAdmin = localStorage.getItem("admin");
+
+    if (controlAdmin != null){
+
+      localStorage.removeItem("admin");
+
+    }
+
     this.router.navigate(['/'])
   }
 

@@ -91,7 +91,10 @@ export class RegistroComponent {
         this.respuesta = res;
 
         if(this.respuesta.status == "ok"){
+
             localStorage.setItem("token", this.respuesta.token);
+            localStorage.setItem("nombre", this.respuesta.nombre);
+
 
             setTimeout(() => {
               location.reload();

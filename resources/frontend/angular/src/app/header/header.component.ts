@@ -10,15 +10,21 @@ export class HeaderComponent implements OnInit{
 
   constructor(private router : Router){}
 
+  controlAdmin = false;
   controlLogin = false;
   nombre = "";
 
   ngOnInit(): void {
 
     const token = localStorage.getItem('token')
+    const admin = localStorage.getItem('admin')
 
     if (token != null) {
       this.controlLogin = true
+    }
+
+    if(admin != null){
+      this.controlAdmin = true
     }
   
   }

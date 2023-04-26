@@ -1,23 +1,27 @@
 <h2 class="border-bottom pt-2">Datos de acceso</h2>
-<form class="pb-3">
+<form class="pb-3" #formDatosCliente="ngForm" [formGroup]="datosClienteForm" (ngSubmit)="modificarDatosCliente()">
     <div class="form-group">
       <label for="inputEmailActual">Email</label>
-      <input type="email" class="form-control" id="inputEmailActual" aria-describedby="emailActualHelp" placeholder="Introduce tu email">
+      <input type="email" name="datosCliente.email" class="form-control" id="inputEmailActual" aria-describedby="emailActualHelp" placeholder="Introduce tu email" [(ngModel)]="datosCliente.email" formControlName="email" required email>
+      <small class="text-danger" *ngIf="datosClienteForm.get('email')?.hasError('required')">Introduce tu email.</small>
+      <small class="text-danger" *ngIf="datosClienteForm.get('email')?.hasError('email')">Introduce un formato de email correcto.</small>
     </div>
     <div class="form-group">
       <label for="inputTelefono">Teléfono</label>
-      <input type="text" class="form-control" id="inputTelefono" placeholder="Teléfono">
+      <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 9);" name="datosCliente.telefono" class="form-control" id="inputTelefono" placeholder="Teléfono" [(ngModel)]="datosCliente.telefono" formControlName="telefono">
+      <small class="text-danger" *ngIf="datosClienteForm.get('telefono')?.hasError('required')">Introduce tu telefono.</small>
+      <small class="text-danger" *ngIf="datosClienteForm.get('telefono')?.hasError('pattern')">Introduce un número de teléfono válido.</small>
     </div>
     <div class="form-group">
-        <label for="inputPasswordNueva">Contraseña</label>
-        <input type="password" class="form-control" id="inputPasswordNueva" placeholder="Password">
+        <label for="inputPasswordNueva">Contraseña nueva</label>
+        <input type="password" name="passwordNueva" class="form-control" id="inputPasswordNueva" placeholder="Password" [(ngModel)]="passwordNueva">
     </div>
     <hr>
     <div class="form-group">
       <label for="inputPasswordActual">Contraseña actual</label>
-      <input type="password" class="form-control" id="inputPasswordActual" aria-describedby="passwordActualHelp" placeholder="Contraseña">
+      <input type="password" name="passwordCliente" class="form-control" id="inputPasswordActual" aria-describedby="passwordActualHelp" placeholder="Contraseña" [(ngModel)]="passwordCliente" formControlName="passwordActual">
       <small id="passwordActualHelp" class="form-text text-muted">Introduce tu contraseña actual para poder cambiar tus datos de acceso.</small>
     </div>
     
-    <button type="submit" class="btn btn-secondary dark">Modificar</button>
+    <button [ngClass]="{'disabled' : !this.datosClienteForm.valid , 'dark' : !this.datosClienteForm.valid}" type="submit" class="btn btn-secondary dark">Modificar</button>
 </form>

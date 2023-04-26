@@ -20,11 +20,29 @@ export class ApiService {
     return this.http.post(url,datosUsuario)
   }
 
-  //TODO : AÑADIR INTERCEPTOR PARA ENVIAR AUTORIZACIÓN EN PETICIONES
+  obtenerDatosClientes(){
+    let url : string = `http://127.0.0.1:8000/api/datos/usuarios`;
 
-  obtenerDatosCliente(token : string){
+    return this.http.get(url)
+  }
+
+  obtenerDatosCliente(token : string|null){
     let url : string = `http://127.0.0.1:8000/api/datos/usuarios/${token}`;
 
     return this.http.get(url)
   }
+
+  modificarDatosClientes(datosCliente : object){
+    let url : string = `http://127.0.0.1:8000/api/datos/usuarios/modificar/`;
+
+    return this.http.put(url,datosCliente)
+  }
+
+  modificarDatosCliente(datosCliente : object , token : string|null){
+    let url : string = `http://127.0.0.1:8000/api/datos/usuarios/modificar/${token}`;
+
+    return this.http.put(url,datosCliente)
+  }
+
+
 }

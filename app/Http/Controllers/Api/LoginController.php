@@ -26,7 +26,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = Usuario::where('email', $request->email)->first();
+        $usuario = Usuario::with('roles')->where('email', $request->email)->first();
 
         if (!$usuario || !Hash::check($request->password, $usuario->password)){
 
@@ -46,13 +46,26 @@ class LoginController extends Controller
             $token->usuario_id = $usuario->id;
             $token->save();
 
+            if($usuario->roles[0]->tipo == "administrador"){
 
-            return response()->json([
+                return response()->json([
 
-                'status' => 'ok',
-                'token' => $idToken,
-                'nombre' => $usuario->nombre,
-            ]);
+                    'status' => 'ok',
+                    'token' => $idToken,
+                    'nombre' => $usuario->nombre,
+                    'admin' => true
+                ]);
+
+            } else if ($usuario->roles[0]->tipo == "cliente"){
+
+                return response()->json([
+
+                    'status' => 'ok',
+                    'token' => $idToken,
+                    'nombre' => $usuario->nombre,
+                ]);
+
+            }
         }
     }
 

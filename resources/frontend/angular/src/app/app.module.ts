@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { PedidosComponent } from './content/cuenta/pedidos/pedidos.component';
 import { CredencialesComponent } from './content/cuenta/perfil/credenciales/credenciales.component';
 import { EnvioComponent } from './content/cuenta/perfil/envio/envio.component';
 import { FacturacionComponent } from './content/cuenta/perfil/facturacion/facturacion.component';
+import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,15 @@ import { FacturacionComponent } from './content/cuenta/perfil/facturacion/factur
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

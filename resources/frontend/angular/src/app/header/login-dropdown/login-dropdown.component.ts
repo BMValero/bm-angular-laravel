@@ -47,6 +47,12 @@ export class LoginDropdownComponent implements OnInit{
           localStorage.setItem("token", this.respuesta.token);
           localStorage.setItem("nombre", this.respuesta.nombre);
 
+          if(this.respuesta.admin){
+
+            localStorage.setItem("admin", this.respuesta.admin);
+
+          }
+
           setTimeout(() => {
             location.reload();
           }, 100);

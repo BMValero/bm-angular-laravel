@@ -1,23 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.scss']
 })
+
+
 export class PerfilComponent implements OnInit{
 
-  //TODO : DEFINIR VARIABLES DEL OBJETO
+  constructor(private router: Router , private apiService : ApiService, private dataService : DataService){
 
-  constructor(private router: Router){}
+    const token : string|null = localStorage.getItem("token")
+
+    this.apiService
+    .obtenerDatosCliente(token)
+    .subscribe((datos) => {
+
+      this.dataService.setDatosCliente(datos)
+
+    })
+
+  }
 
   ngOnInit(): void {
+
     if(this.router.url == "/cuenta/perfil"){
       this.router.navigate(['/cuenta/perfil/credenciales'])
     }
-
-    //TODO : SUSCRIBIRSE AL SERVICIO Y OBTENER LOS DATOS DEL USUARIO
 
   }
 
