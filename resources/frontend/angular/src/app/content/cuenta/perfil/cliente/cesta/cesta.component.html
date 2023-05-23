@@ -1,0 +1,58 @@
+<!-- TODO : HACER RESPONSIVE DE LAS COLUMNAS -->
+
+<div class="row fondo">
+    <div class="col d-flex justify-content-center align-items-center cesta">
+        <div class="caja-cesta rounded pb-1">
+            <div class="px-3 d-flex flex-column">
+                <h1 class="">Cesta</h1>
+                <hr>
+                <span class="d-none" *ngIf="productosCestaCookies && productosCestaCookies != ''">{{productosCesta[0].nombre}}</span>
+                <div class="border sombra rounded m-4 p-2 pe-4 py-4 pastilla-cesta">
+
+                    <div *ngIf="!productosCestaCookies" class="d-flex flex-column align-items-center gap-2">
+                        <h4 >El carrito está vacío.</h4>
+                        <p>Puedes ver nuestros artículos en el <a href="catalogo">catálogo.</a></p>
+                    </div>
+
+                    <div *ngIf="productosCestaCookies && productosCestaCookies != '' " class="d-flex flex-column">
+
+                        <cdk-virtual-scroll-viewport itemSize="20">
+
+                            <div  class="col">
+
+                                <table class="table">
+                                    <tbody>
+                                        <tr *cdkVirtualFor="let producto of productosCesta" class="sombra-producto">
+                                            <td><img [src]="producto.ruta_imagen + 'delante.png'" class="rounded"></td>
+                                            <td>{{producto.nombre}}</td>
+                                            <td>{{producto.talla}}</td>
+                                            <td>{{producto.precio}}€</td>
+                                            <td><button class="btn btn-info px-4"><a href="/catalogo/{{producto.nombre}}" class="text-dark">Ver producto</a></button></td>
+                                            <td><button (click)="eliminarProductoCesta(producto.nombre,producto.talla)" class="btn btn-danger px-4">Eliminar</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </cdk-virtual-scroll-viewport> 
+
+                        <hr>
+
+                        <div class="d-flex justify-content-between align-items-end pt-1 px-3 pb-2 mx-2 border rounded sombra">
+                            <div class="d-flex flex-column p-0">
+                                <h4>Resumen pedido : </h4>
+                                <span>Numero de productos : {{productosCesta.length}}</span>
+                                
+                                <span>Coste total : <strong>{{costeTotal}}€</strong></span>
+                            </div>
+                            <button (click)="comprarCesta()" class="btn btn-success">Comprar</button>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

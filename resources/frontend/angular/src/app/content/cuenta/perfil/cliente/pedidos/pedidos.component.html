@@ -1,0 +1,27 @@
+<div class="caja-pedidos">
+    <h3 class="border-bottom pt-2">{{mensajePedidos}}</h3>
+    <cdk-virtual-scroll-viewport itemSize="20">
+        <ng-container *ngIf="usuario">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Fecha</th>
+                        <th>Productos</th>
+                        <th>Coste</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *cdkVirtualFor="let pedido of usuario.pedidos">
+                        <td>{{pedido.id}}</td>
+                        <td>{{pedido.fecha}}</td>
+                        <td>{{pedido.productos.length}}</td>
+                        <td>{{pedido.coste_total}}</td>
+                        <td><button class="btn btn-info px-4"><a href="/cuenta/perfil/pedidos/{{pedido.id}}">Ver</a></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+    </cdk-virtual-scroll-viewport>
+</div>

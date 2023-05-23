@@ -1,0 +1,26 @@
+<h3 class="border-bottom pt-2">Gestionar usuarios</h3>
+<cdk-virtual-scroll-viewport itemSize="20">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Telefono</th>
+                <th>Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *cdkVirtualFor="let usuario of usuarios">
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.apellidos}}</td>
+                <td>{{usuario.telefono}}</td>
+                <td>{{usuario.id}}</td>
+                <td *ngIf="usuario.roles[0].tipo == 'administrador'"><button (click)="modificarRolUsuario(usuario.id,1,2)" class="btn btn-primary">Hacer cliente</button></td>
+                <td *ngIf="usuario.roles[0].tipo == 'cliente'"><button (click)="modificarRolUsuario(usuario.id,2,1)" class="btn btn-success">Hacer administrador</button></td>
+                <td><button (click)="eliminarUsuario(usuario.id)" class="btn btn-danger">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</cdk-virtual-scroll-viewport>

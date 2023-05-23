@@ -22,7 +22,7 @@ class VerificarPedidoMiddleware
 
         $token = Token::where('id' , $token)->first();
 
-        $usuario = Usuario::where('id' , $token->usuario_id)->first();
+        $usuario = Usuario::with('roles')->where('id' , $token->usuario_id)->first();
 
         $idPedido = $request->segment(4);
 
@@ -30,6 +30,12 @@ class VerificarPedidoMiddleware
 
         if(!$pedido){
             return response()->json(['error' => 'El pedido no existe']);
+        }
+
+        if($usuario->roles[0]->tipo == "administrador"){
+
+            return $next($request);
+
         }
 
         if($pedido->usuario_id != $usuario->id){

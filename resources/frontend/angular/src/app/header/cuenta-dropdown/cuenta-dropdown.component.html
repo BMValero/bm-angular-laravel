@@ -4,8 +4,9 @@
             {{nombre}}
         </button>
         <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/cuenta/perfil">Perfil</a>
-            <a class="dropdown-item" href="/cuenta/pedidos">Pedidos</a>
+            <a *ngIf="admin == false" class="dropdown-item" href="/cuenta/perfil">Perfil</a>
+            <a *ngIf="admin == false" class="dropdown-item" href="/cuenta/perfil/pedidos">Pedidos</a>
+            <a *ngIf="admin == true" class="dropdown-item" href="/cuenta/perfil">Gestión</a>
             <div class="dropdown-divider"></div>
             <a (click)="logOut()" class="dropdown-item" href="">Logout</a>
         </div>

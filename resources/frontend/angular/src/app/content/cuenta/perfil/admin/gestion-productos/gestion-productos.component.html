@@ -1,0 +1,91 @@
+<h3 class="border-bottom pt-2">Añadir nuevo producto</h3>
+<form #formDatosProducto="ngForm" [formGroup]="datosProductoForm" (ngSubmit)="crearNuevoProducto()">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+        <label for="inputTipo">Tipo</label>
+        <select id="inputTipo" class="form-control" formControlName="tipo">
+            <option selected value="camiseta">Camiseta</option>
+            <option value="sudadera">Sudadera</option>
+            <option value="gorra">Gorra</option>
+        </select>
+        <small class="text-danger" *ngIf="datosProductoForm.get('tipo')?.hasError('required')">Introduce el tipo de producto.</small>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputEdicion">Edición</label>
+            <select id="inputEdicion" class="form-control" formControlName="edicion">
+                <option selected value="B&L">Black & White</option>
+            </select>
+            <small class="text-danger" *ngIf="datosProductoForm.get('edicion')?.hasError('required')">Introduce la edición.</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputNombre">Nombre</label>
+        <input type="text" class="form-control" id="inputNombre" placeholder="Escribe el nombre del producto" formControlName="nombre">
+        <small class="text-danger" *ngIf="datosProductoForm.get('nombre')?.hasError('required')">Introduce el nombre del producto</small>
+    </div>
+
+    <div class="form-group">
+        <label for="inputDescripcion">Descripción</label>
+        <input type="text" class="form-control" id="inputDescripcion" placeholder="Describe el producto" formControlName="descripcion">
+        <small class="text-danger" *ngIf="datosProductoForm.get('descripcion')?.hasError('required')">Introduce la descripción del producto.</small>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-1">
+            <label for="inputTipo">Talla</label>
+            <select id="inputTipo" class="form-control" formControlName="talla">
+                <option selected value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+            <small class="text-danger" *ngIf="datosProductoForm.get('talla')?.hasError('required')">Introduce la talla.</small>
+            </div>
+        <div class="form-group col-md-2">
+            <label for="inputPrecio">Precio</label>
+            <input type="text" oninput="this.value = this.value.replace(/[^0-9\.]|(\.(?=.*\.))|(?<=(\.[0-9]{2}))./g, '').substring(0, 6);"class="form-control" id="inputPrecio" formControlName="precio">
+            <small class="text-danger" *ngIf="datosProductoForm.get('precio')?.hasError('required')">Introduce el precio.</small>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputCantidad">Cantidad</label>
+            <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 4);" class="form-control" id="inputCantidad" formControlName="cantidad">
+            <small class="text-danger" *ngIf="datosProductoForm.get('cantidad')?.hasError('required')">Introduce la cantidad de productos a añadir.</small>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputRutaImagen">Ruta imagenes</label>
+            <input type="text" class="form-control" id="inputRutaImagen" formControlName="rutaImagen">
+            <small class="text-danger" *ngIf="datosProductoForm.get('rutaImagen')?.hasError('required')">Introduce la ruta de las imagenes del producto.</small>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Añadir</button>
+
+</form>
+
+<hr>
+
+<h3>Eliminar producto</h3>
+
+<cdk-virtual-scroll-viewport itemSize="20">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Edición</th>
+                <th>Nombre</th>
+                <th>Talla</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *cdkVirtualFor="let producto of productos">
+                <td>{{producto.tipo}}</td>
+                <td>{{producto.edicion}}</td>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.talla}}</td>
+                <td><button (click)="eliminarProducto(producto.id)" class="btn btn-danger">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</cdk-virtual-scroll-viewport>

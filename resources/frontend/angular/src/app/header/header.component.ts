@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit{
   controlAdmin = false;
   controlLogin = false;
   nombre = "";
+  cantidadProductosCesta : any ;
 
   ngOnInit(): void {
 
@@ -26,6 +27,22 @@ export class HeaderComponent implements OnInit{
     if(admin != null){
       this.controlAdmin = true
     }
+
+    let productosCesta = localStorage.getItem("cesta")
+
+    if(productosCesta){
+
+      this.cantidadProductosCesta = productosCesta.split("///")
+
+      this.cantidadProductosCesta = this.cantidadProductosCesta.length
+
+    } else {
+
+      this.cantidadProductosCesta = 0
+
+    }
+
+    
   
   }
 

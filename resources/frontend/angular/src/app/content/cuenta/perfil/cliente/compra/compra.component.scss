@@ -1,0 +1,74 @@
+img{
+    height: 40px;
+    width: 120px;
+  }
+
+.compra{
+    flex-grow: 1;
+    min-height: calc(100vh - 239px);
+}
+
+textarea{
+    overflow: scroll;
+    resize: none;
+}
+
+.pastilla-compra{
+    background-color: rgba(231, 231, 231, 0.384);
+    box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.2);
+    height: 65vh;
+}
+
+.pastilla-pago{
+    background-color: rgba(255, 255, 255, 0.863);
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .slider {
+        height: 72vh;
+        background-image: url("https://picsum.photos/1080/2440");
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1920px) {
+
+    .slider {
+        height: 87vh;
+        background-image: url("https://picsum.photos/1080/2440");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .formulario{
+        height: 80vh;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1920px) and (min-height: 1000px) and (max-height:1307px){
+
+    .slider {
+        height: 82vh;
+        background-image: url("https://picsum.photos/1080/2440");
+        background-size: cover;
+        background-position: center;
+    }
+
+}
+
+@media (min-width: 1921px){
+
+    .slider {
+        height: 83vh;
+        background-image: url("https://picsum.photos/1080/2440");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .formulario{
+        height: 48vh;
+    }
+
+}

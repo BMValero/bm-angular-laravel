@@ -1,0 +1,45 @@
+<ng-container *ngIf="controlPertenenciaCliente == false">
+    <h2 class="border-bottom pt-2">{{mensajePedido}}</h2>
+</ng-container>
+<ng-container *ngIf="controlPertenenciaCliente == true">
+
+    <h3 class="border-bottom pt-2">{{mensajePedido}}</h3>
+
+    <div>
+        <div class="card p-2">
+            <h4>Tu pedido #{{numeroPedido}} está <span class="text-info">pendiente de procesar.</span></h4>
+            <p>Se entregará en <em>{{this.fichaPedido.direccion_entrega.direccion}} , {{this.fichaPedido.direccion_entrega.cp}} , {{this.fichaPedido.direccion_entrega.ciudad}}.</em></p>
+            <h4>{{this.fichaPedido.pedido.coste_total}}€</h4>
+        </div>
+    </div>
+
+    <h3 class="my-3">Productos que contiene tu pedido.</h3>
+
+    <div class="card">
+        <cdk-virtual-scroll-viewport itemSize="20">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edicion</th>
+                        <th>Talla</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *cdkVirtualFor="let producto of fichaPedido.pedido.productos">
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.edicion}}</td>
+                        <td>{{producto.talla.length}}</td>
+                        <td>{{producto.precio}}</td>
+                        <!-- TODO : AÑADIR LINK AL PRODUCTO
+                        <td><button class="btn btn-info"><a href="/cuenta/perfil/pedidos/{{pedido.id}}">Ver</a></button></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </cdk-virtual-scroll-viewport>
+    </div>
+
+    <button class="btn btn-success mt-3 float-right me-3 mb-3" (click)="descargarFacturaPdf()">Descargar Factura (PDF)</button>
+
+</ng-container>

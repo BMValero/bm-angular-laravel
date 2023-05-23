@@ -31,12 +31,15 @@ class ClienteMiddleware
 
         $usuario = Usuario::with(['roles'])->where('id', $token->usuario_id)->first();
 
-        $rolUsuario = $usuario->roles()->where('usuario_id' , $usuario->id)->where('tipo' , 'cliente')->first();
+        $rolUsuario = $usuario->roles()->where('usuario_id' , $usuario->id)->first();
 
-        if(!$rolUsuario){
+        if($rolUsuario->tipo == "cliente" || $rolUsuario->tipo == "administrador"){
+
+            return $next($request);
+
+        } else {
+
             return response()->json(['error' => 'El usuario no es cliente']);
         }
-
-        return $next($request);
     }
 }

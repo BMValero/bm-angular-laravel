@@ -1,2 +1,167 @@
-<h1>ESTE ES EL CATÁLOGO</h1>
-<router-outlet></router-outlet>
+<div class="row">
+    <div class="col">
+        <div class="d-flex flex-column justify-content-center align-items-center catalogo">
+
+            <div class="d-flex justify-content-center align-items-end gap-3 mb-4">
+                <a href="/catalogo" class="border-bottom pb-2 link-secondary">Todo el catálogo</a>
+                <span class="border-right barra-menu"></span>
+                <a href="/catalogo/gorras" class="border-bottom pb-2 link-secondary">Gorras</a>
+                <a href="/catalogo/camisetas" class="border-bottom pb-2 link-secondary">Camisetas</a>
+                <a href="/catalogo/sudaderas" class="border-bottom pb-2 link-secondary">Sudaderas</a>
+            </div>
+            
+            <div class="p-3 d-flex gap-2 col-9 pastilla-catalogo border rounded">
+
+                <form class="p-3 col-2 border rounded filtros sombra-suave list-group " [formGroup]="filtrosForm" (ngSubmit)="filtrar()">
+
+                    <span class="pb-2">Ordenar por :</span>
+
+                    <div class="d-flex p-1">
+                        <div class="pe-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ordenarTipo" id="inputRadioOrdenarNombre" value="nombre" formControlName="ordenarTipo" checked>
+                                <label class="form-check-label" for="inputRadioOrdenarNombre">
+                                Nombre
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ordenarTipo" id="inputRadioOrdenarPrecio" value="precio" formControlName="ordenarTipo">
+                                <label class="form-check-label" for="inputRadioOrdenarPrecio">
+                                Precio
+                                </label>
+                            </div>
+                        </div>
+                        <div class="border-left ps-2 me-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ordenarDireccion" id="inputRadioOrdenarDireccionAsc" value="asc" formControlName="ordenarDireccion" checked>
+                                <label class="form-check-label" for="inputRadioOrdenarDireccionAsc">
+                                Asc.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ordenarDireccion" id="inputRadioOrdenarDireccionDesc" value="desc" formControlName="ordenarDireccion">
+                                <label class="form-check-label" for="inputRadioOrdenarDireccionDesc">
+                                Desc.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <span class="pb-1">Filtrar por :</span>
+
+                    <div class="border-bottom pb-3 p-1">
+
+                        <span class="border-bottom">Talla</span>
+                        
+                        <div class="d-flex gap-3 mt-2">
+                            <div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkTallaXS" formControlName="filtrarTallaXS">
+                                    <label class="form-check-label" for="checkTallaXS">
+                                    XS
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkTallaS" formControlName="filtrarTallaS">
+                                    <label class="form-check-label" for="checkTallaS">
+                                    S
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkTallaM" formControlName="filtrarTallaM">
+                                    <label class="form-check-label" for="checkTallaM">
+                                    M
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="border-left ps-2 me-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkTallaL" formControlName="filtrarTallaL">
+                                    <label class="form-check-label" for="checkTallaL">
+                                    L
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkTallaXL" formControlName="filtrarTallaXL">
+                                    <label class="form-check-label" for="checkTallaXL">
+                                    XL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="mt-2">
+
+                        <span class="border-bottom">Precio</span>
+                        
+                        <div class="d-flex gap-2 mt-2">
+                            <div>
+                                <label for="inputPrecioDesde">Desde : </label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control"  id="inputPrecioDesde" formControlName="precioDesde" oninput="this.value = this.value.replace(/[^0-9\.]|(\.(?=.*\.))|(?<=(\.[0-9]{2}))./g, '').substring(0, 6);">
+                                    <div class="input-group-append">
+                                    <span class="input-group-text">€</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="inputPrecioHasta">Hasta : </label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control"  id="inputPrecioHasta" formControlName="precioHasta" oninput="this.value = this.value.replace(/[^0-9\.]|(\.(?=.*\.))|(?<=(\.[0-9]{2}))./g, '').substring(0, 6);">
+                                    <div class="input-group-append">
+                                    <span class="input-group-text">€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+
+                    <hr>
+
+                    
+                    <button type="submit" class="btn btn-secondary">Aplicar</button>
+                </form>
+
+                <div class="p-3 col-10 border rounded sombra-suave">
+
+                    <cdk-virtual-scroll-viewport itemSize="10">
+
+                        <div *ngIf="this.controlCatalogo == true" class="d-flex flex-wrap gap-2">
+
+                            <div *ngFor="let producto of catalogoMostrar" class="card cards-productos">
+                                <img class="card-img-top" [src]="producto.ruta_imagen + 'delante.png'" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title border-bottom pb-2">{{producto.nombre}}</h5>
+                                <p class="card-text">{{producto.descripcion}}</p>
+                                </div>
+                                <div>
+                                    <hr>
+                                    <div class="card-body pt-0 mt-0">
+                                    <div class="d-flex justify-content-between align-items-end">
+                                        <a [href]="'catalogo/' + formatearNombreProducto(producto.nombre)" class="btn btn-primary">Ver producto</a>
+                                        <h5 class="text-xl"><strong>{{producto.precio}}€</strong></h5>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <router-outlet *ngIf="this.controlCatalogo == false"></router-outlet>
+
+                    </cdk-virtual-scroll-viewport>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

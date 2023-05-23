@@ -1,2 +1,48 @@
-<h1>INFORMACIÓN DE CONTACTO</h1>
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi nobis ipsum molestiae exercitationem earum quia minima dolorem dolorum qui molestias blanditiis distinctio, repellat voluptates temporibus perferendis atque, maxime ut hic.</p>
+<div class="row">
+    <div class="col">
+        <div class="contacto d-flex">
+            <div class="col p-0">
+                <div class="slider"></div>
+            </div>
+            <div class="col d-flex justify-content-center align-items-center"> 
+                <form class="p-3 d-flex flex-column justify-content-between border rounded pastilla-contacto col-6 formulario" [formGroup]="contactoForm" (ngSubmit)="contactar()">
+                    <div class="d-flex flex-column justify-content-start">
+                        <h2 class="border-bottom mb-3 pb-2">Contáctanos</h2>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="inputNombre">Nombre</label>
+                                    <input type="text" class="form-control" id="inputNombre" aria-describedby="emailHelp" placeholder="Nombre" formControlName="nombre">
+                                    <small class="text-danger" *ngIf="contactoForm.get('nombre')?.hasError('required')">Introduce tu nombre.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputTelefono">Teléfono</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                        <div class="input-group-text">+34</div>
+                                        </div>
+                                        <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 9);" class="form-control" id="inputTelefono" aria-describedby="emailHelp" placeholder="Telefono" formControlName="telefono">
+                                    </div>
+                                    <small class="text-danger" *ngIf="contactoForm.get('telefono')?.hasError('required')">Introduce tu telefono.</small>
+                                    <small class="text-danger" *ngIf="contactoForm.get('telefono')?.hasError('pattern')">Introduce un número de teléfono válido.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Introduce tu email" formControlName="email">
+                                    <small class="text-danger" *ngIf="contactoForm.get('email')?.hasError('required')">Introduce tu email.</small>
+                                    <small class="text-danger" *ngIf="contactoForm.get('email')?.hasError('email')">Introduce un formato de email correcto.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputMensaje">Mensaje</label>
+                                    <textarea class="form-control" id="inputMensaje" rows="3" formControlName="mensaje"></textarea>
+                                    <small class="text-danger" *ngIf="contactoForm.get('mensaje')?.hasError('required')">Introduce el mensaje.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button [ngClass]="{'disabled' : !this.contactoForm.valid , 'dark' : !this.contactoForm.valid}" type="submit" class="btn btn-secondary boton">Contactar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

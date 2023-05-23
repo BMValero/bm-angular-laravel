@@ -1,17 +1,28 @@
 <!-- TODO : HACER RESPONSIVE DE LAS COLUMNAS -->
-<div class="perfil mt-2">
-    <div class="container">
-        <h1 class="border-bottom">Perfil</h1>
-        <div class="col d-flex justify-content-center align-items-start border rounded m-4 p-4">
-            <div class="col">
-                <div class="list-group">
-                    <a href="cuenta/perfil/credenciales" class="list-group-item list-group-item-action">Datos de acceso</a>
-                    <a href="cuenta/perfil/envio" class="list-group-item list-group-item-action">Datos de envío</a>
-                    <a href="cuenta/perfil/facturacion" class="list-group-item list-group-item-action">Datos de facturación</a>
+<div class="caja-perfil rounded pb-1">
+    <div class="perfil px-3">
+        <h1 *ngIf="admin == false" class="border-bottom">Perfil</h1>
+        <h1 *ngIf="admin == true" class="border-bottom">Gestión</h1>
+        <div class="d-flex justify-content-center align-items-start border sombra rounded m-4 p-2 pe-4 py-4 pastilla-perfil">
+            <div class="col-2">
+                <div>
+                    <div class="list-group mb-3 sombra-suave">
+                        <a *ngIf="admin == false" href="cuenta/perfil/credenciales" class="list-group-item list-group-item-action">Datos acceso</a>
+                        <a *ngIf="admin == false" href="cuenta/perfil/envio" class="list-group-item list-group-item-action">Datos envío</a>
+                        <a *ngIf="admin == false" href="cuenta/perfil/facturacion" class="list-group-item list-group-item-action">Datos facturación</a>
+                        <a *ngIf="admin == true" href="cuenta/perfil/gestion-usuarios" class="list-group-item list-group-item-action">Usuarios</a>
+                        <a *ngIf="admin == true" href="cuenta/perfil/gestion-productos" class="list-group-item list-group-item-action">Productos</a>
+                        <a *ngIf="admin == true" href="cuenta/perfil/gestion-pedidos" class="list-group-item list-group-item-action">Pedidos</a>
+                    </div>
+                    <div *ngIf="admin == false" class="list-group sombra-suave">
+                        <a href="cuenta/perfil/pedidos" class="list-group-item list-group-item-action">Pedidos</a>
+                    </div>
                 </div>
             </div>
-            <div class="col-8 border">
-                <router-outlet></router-outlet>
+            <div class="col-10 border rounded sombra-suave">
+                <cdk-virtual-scroll-viewport itemSize="20">
+                    <router-outlet></router-outlet>
+                </cdk-virtual-scroll-viewport>
             </div>
         </div>
     </div>

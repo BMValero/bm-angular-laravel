@@ -1,4 +1,5 @@
 <form class="p-3 d-flex flex-column pastilla-login rounded border" [formGroup]="usuarioFormLogin" (ngSubmit)="login()">
+  <h2 class="border-bottom mb-3 pb-2">Login.</h2>
     <div class="form-group">
       <label for="emailInput">Email</label>
       <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Introduce tu email" formControlName="email">
@@ -10,7 +11,7 @@
       <input type="password" class="form-control" id="passwordInput" placeholder="Contraseña" formControlName="password">
       <small class="text-danger" *ngIf="usuarioFormLogin.get('password')?.hasError('required')">Introduce tu contraseña.</small>
     </div>
-    <div class="form-group">
+    <div class="form-group border-top pt-2">
       <small class="form-check-label" for="exampleCheck1">¿ No tienes cuenta ?<a class="text-secondary" href="/acceso/registro"> Registrate</a></small>
     </div>
     <button [ngClass]="{'disabled' : !this.usuarioFormLogin.valid , 'dark' : !this.usuarioFormLogin.valid}" type="submit" class="btn btn-secondary boton"></button>

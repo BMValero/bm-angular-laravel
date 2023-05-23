@@ -1,0 +1,33 @@
+img{
+    height: 250px;
+}
+
+@media (max-width: 767px) {
+
+    
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1920px) {
+
+    .cards-productos{
+        width: 17rem;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1920px) and (min-height: 1000px) and (max-height:1307px){
+
+
+}
+
+@media (min-width: 1921px){
+
+    .cards-productos{
+        width: 15rem;
+    }
+
+}

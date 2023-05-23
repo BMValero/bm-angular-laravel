@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\EntregaDireccione;
 use App\Models\FacturacionDireccione;
+use App\Models\Role;
 use App\Models\Token;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -17,7 +18,9 @@ class ModificarDatosController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::with('roles')->orderBy('email', 'asc')->get();
+
+        return $usuarios;
     }
 
     /**
@@ -70,9 +73,19 @@ class ModificarDatosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $token)
+    public function update(Request $request)
     {
-        //
+        $usuario = Usuario::findOrFail($request->usuario_id);
+
+        $rol_antiguo = Role::findOrFail($request->rol_antiguo_id);
+
+        $rol_nuevo = Role::findOrFail($request->rol_nuevo_id);
+
+        $usuario->roles()->detach($rol_antiguo->id);
+
+        $usuario->roles()->attach($rol_nuevo->id);
+
+        return response()->json(['message' => 'Usuario actualizado con éxito']);
     }
 
     /**

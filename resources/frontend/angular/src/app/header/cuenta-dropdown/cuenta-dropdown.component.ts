@@ -11,14 +11,22 @@ export class CuentaDropdownComponent {
   constructor(private router : Router){}
 
   nombre = "";
+  admin = false
 
   ngOnInit(): void {
 
     const nombre = localStorage.getItem('nombre')
+
+    const admin = localStorage.getItem('admin')
     
     if (nombre != null){
       this.nombre = nombre
     }
+
+    if (admin != null){
+      this.admin = true
+    }
+  
   }
 
   logOut(){

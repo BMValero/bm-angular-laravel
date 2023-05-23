@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col">
+        <div class="compra d-flex">
+            <div class="col p-0">
+                <div class="slider"></div>
+            </div>
+            <div class="col d-flex justify-content-center align-items-center"> 
+                <form class="p-3 d-flex flex-column justify-content-between border rounded pastilla-compra col-8 formulario" [formGroup]="pagoForm" (ngSubmit)="pagar()">
+                    <div class="d-flex flex-column justify-content-start">
+                        <h2 class="border-bottom mb-3 pb-2">Resumen del pedido</h2>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group d-flex justify-content-between">
+                                    <p>Cantidad de productos : {{cantidadProductos}}</p>
+                                    <p>Coste total : <strong style="font-size: x-large;">{{costeTotal}}€</strong></p>
+                                </div>
+                                <hr>
+                                <div class="d-flex flex-column gap-2">
+                                    <span >Detalles de envío :</span>
+                                    <div class="d-flex flex-column container">
+                                        <span class="mb-1">Nombre : {{datosCliente.direccion_entrega.nombre}}</span>
+                                        <span class="mb-1">Dirección : {{datosCliente.direccion_entrega.direccion}} , {{datosCliente.direccion_entrega.cp}} , {{datosCliente.direccion_entrega.ciudad}}</span>
+                                        <span>Teléfono : {{datosCliente.direccion_entrega.telefono}}</span>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex flex-column gap-2">
+                                    <span>Detalles de facturación :</span>
+                                    <div class="d-flex flex-column container">
+                                        <span class="mb-1">Nombre : {{datosCliente.direccion_facturacion.nombre}}</span>
+                                        <span class="mb-1">Dirección : {{datosCliente.direccion_facturacion.direccion}} , {{datosCliente.direccion_facturacion.cp}} , {{datosCliente.direccion_facturacion.ciudad}}</span>
+                                        <span>Teléfono : {{datosCliente.direccion_facturacion.telefono}}</span>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex flex-column gap-2 mb-2">
+                                    <span>Método de pago :</span>
+                                    <div class="d-flex container align-items-center justify-content-start gap-4 border rounded p-3 pastilla-pago">
+                                        <div class="form-check d-flex align-items-center">
+                                            <input class="form-check-input" type="radio" name="metodoPago" value="stripe" formControlName="metodoPago" checked>
+                                            <label class="form-check-label" for="inputRadioOrdenarNombre">
+                                                <img src="/assets/footer/stripe-logo.svg" alt="" class="border">
+                                            </label>
+                                        </div>
+                                        <div class="form-check d-flex align-items-center">
+                                            <input class="form-check-input" type="radio" name="metodoPago" value="paypal" formControlName="metodoPago">
+                                            <label class="form-check-label" for="inputRadioOrdenarPrecio">
+                                                <img src="/assets/footer/paypal-logo.jpg" alt="" class="border">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column gap-2">
+                                    <span>Método de envío :</span>
+                                    <div class="d-flex container align-items-center justify-content-start gap-4 border rounded p-3 pastilla-pago">
+                                        <div class="form-check d-flex align-items-center">
+                                            <input class="form-check-input" type="radio" name="metodoEnvio" value="mrw" formControlName="metodoEnvio">
+                                            <label class="form-check-label" for="inputRadioOrdenarNombre">
+                                                <img src="/assets/footer/mrw-logo.jpg" alt="" class="border">
+                                            </label>
+                                        </div>
+                                        <div class="form-check d-flex align-items-center">
+                                            <input class="form-check-input" type="radio" name="metodoEnvio" value="correos" formControlName="metodoEnvio">
+                                            <label class="form-check-label" for="inputRadioOrdenarPrecio">
+                                                <img src="/assets/footer/correos-logo.jpg" alt="" class="border">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button *ngIf="cantidadProductos > 0"  type="submit" class="btn btn-secondary boton">Realizar pedido</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { DataService } from 'src/app/services/data.service';
@@ -11,6 +11,8 @@ import { DataService } from 'src/app/services/data.service';
 
 
 export class PerfilComponent implements OnInit{
+
+  admin = false
 
   constructor(private router: Router , private apiService : ApiService, private dataService : DataService){
 
@@ -28,10 +30,21 @@ export class PerfilComponent implements OnInit{
 
   ngOnInit(): void {
 
-    if(this.router.url == "/cuenta/perfil"){
+    const admin = localStorage.getItem("admin")
+
+    if(admin != null){
+      this.admin = true
+    }
+
+    if(this.router.url == "/cuenta/perfil" && this.admin == false){
       this.router.navigate(['/cuenta/perfil/credenciales'])
     }
 
+    if(this.router.url == "/cuenta/perfil" && this.admin == true){
+      this.router.navigate(['/cuenta/perfil/gestion-usuarios'])
+    }
+
   }
+
 
 }

@@ -1,0 +1,38 @@
+<ng-container *ngIf="datosCliente">
+    <h2 class="border-bottom pt-2">Datos de facturación</h2>
+    <form class="pb-3 d-flex formulario" #formDatosCliente="ngForm">
+        <div class="col">
+            <div class="form-group">
+                <label for="inputNombre">Nombre</label>
+                <input type="text" name="datosCliente.direccion_facturacion.nombre" class="form-control" id="inputNombre" placeholder="Introduce tu nombre" [(ngModel)]="datosCliente.direccion_facturacion.nombre">
+            </div>
+            <div class="form-group">
+                <label for="inputApellidos">Apellidos</label>
+                <input type="text" name="datosCliente.direccion_facturacion.apellidos" class="form-control" id="inputApellidos" placeholder="Introduce tus apellidos" [(ngModel)]="datosCliente.direccion_facturacion.apellidos">
+            </div>
+            <div class="d-flex">
+                <div class="form-group pr-3">
+                    <label for="inputCiudad">Ciudad</label>
+                    <input type="text" name="datosCliente.direccion_facturacion.ciudad" class="form-control" id="inputCiudad" placeholder="Introduce tu ciudad" [(ngModel)]="datosCliente.direccion_facturacion.ciudad">
+                </div>
+                <div class="form-group pr-3">
+                    <label for="inputCp">CP</label>
+                    <input type="text" name="datosCliente.direccion_facturacion.cp" class="form-control" id="inputCp" placeholder="Introduce tu cp" [(ngModel)]="datosCliente.direccion_facturacion.cp">
+                </div>
+            </div>
+        </div>
+
+        <div class="col border-left">
+            <div class="form-group">
+                <label for="inputDireccion">Dirección</label>
+                <input type="text" name="datosCliente.direccion_facturacion.direccion" class="form-control" id="inputDireccion" placeholder="Introduce tu dirección" [(ngModel)]="datosCliente.direccion_facturacion.direccion">
+            </div>
+            <div class="form-group">
+                <label for="inputTelefono">Teléfono</label>
+                <input type="text" name="datosCliente.direccion_facturacion.telefono" class="form-control" id="inputTelefono" placeholder="Teléfono" [(ngModel)]="datosCliente.direccion_facturacion.telefono">
+            </div>
+            
+            <button (click)="modificarDatosCliente()" type="submit" class="btn btn-secondary dark">Modificar</button>
+        </div>
+    </form>
+</ng-container>

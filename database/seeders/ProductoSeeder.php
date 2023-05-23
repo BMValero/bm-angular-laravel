@@ -33,7 +33,6 @@ class ProductoSeeder extends Seeder
         $producto->talla = 'L';
         $producto->precio = 14.99;
         $producto->ruta_imagen = '/imagenes/BW/camisetas/Original-Black/';
-        $producto->pedido_id = 1;
         $producto->save();
 
         $producto = new Producto();
@@ -55,7 +54,6 @@ class ProductoSeeder extends Seeder
         $producto->talla = 'X';
         $producto->precio = 19.99;
         $producto->ruta_imagen = '/imagenes/BW/gorras/Urban-Black/';
-        $producto->pedido_id = 2;
         $producto->save();
     }
 }

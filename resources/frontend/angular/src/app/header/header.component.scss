@@ -3,6 +3,11 @@
     color: #fff;
 }
 
+.header-content{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
 .header-logo img {
     height: 50px;
 }
@@ -11,6 +16,6 @@
     font-size: 18px;
 }
 
-.navegador{
-    padding-left: 13%;
+a{
+    text-decoration: none;
 }

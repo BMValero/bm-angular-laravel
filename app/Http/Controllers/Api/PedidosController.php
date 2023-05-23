@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\EntregaDireccione;
+use App\Models\FacturacionDireccione;
 use App\Models\Token;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -15,7 +17,8 @@ class PedidosController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::with(['productos'])->get();
+        $pedidos = Pedido::with(['productos', 'usuario'])->get();
+
         return $pedidos;
     }
 
@@ -24,7 +27,7 @@ class PedidosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -37,7 +40,7 @@ class PedidosController extends Controller
 
         $usuario = Usuario::with(['pedidos.productos'])->where('id', $token->usuario_id)->first();
 
-        return $usuario->pedidos;
+        return $usuario;
     }
 
     /**
@@ -58,9 +61,13 @@ class PedidosController extends Controller
 
     public function fichaPedido(string $id){
 
-        $pedido =  Pedido::where('id' , $id)->first();
+        $pedido =  Pedido::with(['productos'])->where('id' , $id)->first();
+        $usuario = Usuario::where('id' , $pedido->usuario_id)->first();
+        $direccionEntrega = EntregaDireccione::where('usuario_id' , $usuario->id)->first();
+        $direccionFacturacion = FacturacionDireccione::where('usuario_id' , $usuario->id)->first();
 
-        return $pedido;
+        
 
+        return response()->json(['usuario' => $usuario , 'pedido' => $pedido , 'direccion_entrega' => $direccionEntrega , 'direccion_facturacion' => $direccionFacturacion]);
     }
 }

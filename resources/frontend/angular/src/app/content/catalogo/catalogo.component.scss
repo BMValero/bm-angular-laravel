@@ -1,3 +1,86 @@
-h1{
-    height: 82vh;
+a{
+    text-decoration: none;
+}
+
+img{
+    height: 250px;
+}
+
+.barra-menu{
+    padding-top: 28px;
+    margin-bottom: 3px;
+}
+
+.sombra-suave{
+    box-shadow: 0px 1px 1px 1px rgba(105, 105, 105, 0.2);
+}
+
+
+.catalogo{
+    position: relative;
+    top:35px;
+    height: 100%;
+    padding-bottom: 150px;
+}
+
+.pastilla-catalogo{
+    background-color: rgba(231, 231, 231, 0.384);
+    box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.2);
+    height: 120vh;
+}
+
+@media (max-width: 767px) {
+
+    cdk-virtual-scroll-viewport{
+
+        height: 800px;
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1920px) {
+
+    cdk-virtual-scroll-viewport{
+
+        height: 100%
+    }
+
+    .cards-productos{
+        width: 17rem;
+    }
+
+    .filtros{
+        height: 32rem;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1920px) and (min-height: 1000px) and (max-height:1307px){
+
+    cdk-virtual-scroll-viewport{
+
+        height: 700px;
+    }
+
+}
+
+@media (min-width: 1921px){
+
+    cdk-virtual-scroll-viewport{
+
+        height: 100%
+    }
+
+    .cards-productos{
+        width: 15rem;
+    }
+
+    .filtros{
+        height: 32em;
+    }
+
 }

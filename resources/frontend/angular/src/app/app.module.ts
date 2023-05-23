@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,11 +22,18 @@ import { RegistroComponent } from './content/acceso/registro/registro.component'
 import { PerfilComponent } from './content/cuenta/perfil/perfil.component';
 import { CuentaComponent } from './content/cuenta/cuenta.component';
 import { CuentaDropdownComponent } from './header/cuenta-dropdown/cuenta-dropdown.component';
-import { PedidosComponent } from './content/cuenta/pedidos/pedidos.component';
-import { CredencialesComponent } from './content/cuenta/perfil/credenciales/credenciales.component';
-import { EnvioComponent } from './content/cuenta/perfil/envio/envio.component';
-import { FacturacionComponent } from './content/cuenta/perfil/facturacion/facturacion.component';
+import { CredencialesComponent } from './content/cuenta/perfil/cliente/credenciales/credenciales.component';
+import { EnvioComponent } from './content/cuenta/perfil//cliente/envio/envio.component';
+import { FacturacionComponent } from './content/cuenta/perfil/cliente/facturacion/facturacion.component';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
+import { GestionUsuariosComponent } from './content/cuenta/perfil/admin/gestion-usuarios/gestion-usuarios.component';
+import { GestionProductosComponent } from './content/cuenta/perfil/admin/gestion-productos/gestion-productos.component';
+import { GestionPedidosComponent } from './content/cuenta/perfil/admin/gestion-pedidos/gestion-pedidos.component';
+import { PedidosComponent } from './content/cuenta/perfil/cliente/pedidos/pedidos.component';
+import { FichaPedidoComponent } from './content/cuenta/perfil/cliente/pedidos/ficha-pedido/ficha-pedido.component';
+import { FichaProductoComponent } from './content/catalogo/ficha-producto/ficha-producto.component';
+import { CestaComponent } from './content/cuenta/perfil/cliente/cesta/cesta.component';
+import { CompraComponent } from './content/cuenta/perfil/cliente/compra/compra.component';
 
 @NgModule({
   declarations: [
@@ -46,10 +54,17 @@ import { AuthInterceptorService } from './interceptors/auth-interceptor.service'
     PerfilComponent,
     CuentaComponent,
     CuentaDropdownComponent,
-    PedidosComponent,
     CredencialesComponent,
     EnvioComponent,
-    FacturacionComponent
+    FacturacionComponent,
+    GestionUsuariosComponent,
+    GestionProductosComponent,
+    GestionPedidosComponent,
+    FichaPedidoComponent,
+    PedidosComponent,
+    FichaProductoComponent,
+    CestaComponent,
+    CompraComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +72,7 @@ import { AuthInterceptorService } from './interceptors/auth-interceptor.service'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ScrollingModule
   ],
 
   providers: [

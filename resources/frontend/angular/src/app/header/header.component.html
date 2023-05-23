@@ -1,13 +1,13 @@
 <!-- TODO : HACER EL HEADER RESPONSIVE -->
 
 <header class="header fixed-top px-3">
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="header-content navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand header-logo" href="/"><img src="./assets/LOGO BM BUENO.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto navegador">
+            <ul class="navbar-nav navegador">
                 <li class="nav-item dropdown dropdown-hover">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Catálogo
@@ -24,10 +24,25 @@
                     <a class="nav-link" href="/contacto">Contacto</a>
                 </li>
             </ul>
+
+            <!-- TODO : CREAR BÚSQUEDA DINÁMICA DE PRODUCTOS -->
+            <input class="form-control mr-sm-2 px-4 mx-4" type="search" placeholder="Buscar productos" aria-label="Search" style="height: 35px;">
+            
             <form class="form-inline my-2 my-lg-0">
-                <span class="text-info" *ngIf="controlAdmin == true">Admin</span>
-                <!-- TODO : CREAR BÚSQUEDA DINÁMICA DE PRODUCTOS -->
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos" aria-label="Search">
+                <span class="text-success mr-3 px-2" *ngIf="controlAdmin == true">Administrador</span>
+                <button class="btn btn-success mr-4 px-2 position-relative" *ngIf="controlAdmin == false">
+                    <a class="text-white d-flex justify-content-center align-items-center gap-2" href="/cesta">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        Cesta
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border">
+                            {{cantidadProductosCesta}}
+                            <span class="visually-hidden">productos en la cesta</span>
+                        </span>
+                    </a>
+                </button>
+                
             </form>
             <app-login-dropdown *ngIf="controlLogin == false"></app-login-dropdown>
             <app-cuenta-dropdown *ngIf="controlLogin == true"></app-cuenta-dropdown>
