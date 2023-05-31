@@ -14,7 +14,7 @@ textarea{
 }
 
 .pastilla-compra{
-    background-color: rgba(231, 231, 231, 0.384);
+    background-color: rgba(240, 240, 240, 0.952);
     box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.2);
     height: 65vh;
 }
@@ -26,7 +26,7 @@ textarea{
 @media (min-width: 768px) and (max-width: 991px) {
     .slider {
         height: 72vh;
-        background-image: url("https://picsum.photos/1080/2440");
+        background-image: url("/assets/content/compra-slider.png");
         background-size: cover;
         background-position: center;
     }
@@ -36,7 +36,7 @@ textarea{
 
     .slider {
         height: 87vh;
-        background-image: url("https://picsum.photos/1080/2440");
+        background-image: url("/assets/content/compra-slider.png");
         background-size: cover;
         background-position: center;
     }
@@ -51,7 +51,7 @@ textarea{
 
     .slider {
         height: 82vh;
-        background-image: url("https://picsum.photos/1080/2440");
+        background-image: url("/assets/content/compra-slider.png");
         background-size: cover;
         background-position: center;
     }
@@ -62,7 +62,7 @@ textarea{
 
     .slider {
         height: 83vh;
-        background-image: url("https://picsum.photos/1080/2440");
+        background-image: url("/assets/content/compra-slider.png");
         background-size: cover;
         background-position: center;
     }

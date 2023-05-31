@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { AlertasService } from 'src/app/services/alertas.service';
 
 @Component({
   selector: 'app-ficha-producto',
@@ -16,7 +17,7 @@ export class FichaProductoComponent {
 
   producto : any
 
-  constructor(private route: ActivatedRoute, private location : Location , private apiService : ApiService){
+  constructor(private route: ActivatedRoute, private location : Location , private apiService : ApiService , private alertService : AlertasService){
 
     const nombreProducto = this.route.snapshot.url[this.route.snapshot.url.length - 1].path;
 
@@ -90,7 +91,11 @@ export class FichaProductoComponent {
 
     }
 
-    location.reload()
+    this.alertService.mostrarAlerta("Producto añadido." , 3000 , true);
+
+    setTimeout(() => {
+      location.reload()
+    }, 1000)
 
   }
 

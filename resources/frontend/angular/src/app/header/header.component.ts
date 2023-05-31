@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +10,67 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit{
 
-  constructor(private router : Router){}
-
+  subscription : Subscription
   controlAdmin = false;
   controlLogin = false;
   nombre = "";
   cantidadProductosCesta : any ;
+  textoProducto : any;
+
+  listaProductos : any;
+  catalogoFiltrar = []
+  catalogoMostrar = []
+
+  productosMostrar = []
+
+
+
+  constructor(private router : Router , private apiService : ApiService){
+
+    this.apiService.obtenerProductos().subscribe((res)=>{
+
+      this.listaProductos = res;
+
+      this.listaProductos.forEach(productoLista => {
+      
+        let controlProductoMostrarExiste = true
+        let controlProductoExiste = true
+
+        this.catalogoMostrar.forEach(productoCatalogo => {
+          
+          if(productoLista.nombre == productoCatalogo.nombre && productoLista.tipo == productoCatalogo.tipo){
+          
+            controlProductoMostrarExiste = false
+
+          }
+
+        });
+
+        this.catalogoFiltrar.forEach(productoCatalogo => {
+          
+          if(productoLista.nombre == productoCatalogo.nombre && productoLista.tipo == productoCatalogo.tipo && productoLista.talla == productoCatalogo.talla){
+          
+            controlProductoExiste = false
+
+          }
+
+        });
+
+        if(controlProductoMostrarExiste == true){
+
+          this.catalogoMostrar.push(productoLista)
+
+        }
+
+        if(controlProductoExiste == true){
+
+          this.catalogoFiltrar.push(productoLista)
+
+        }
+
+      });
+    })
+  }
 
   ngOnInit(): void {
 
@@ -42,8 +99,27 @@ export class HeaderComponent implements OnInit{
 
     }
 
+  }
+
+
+  buscarProducto(evento : any){
+
+    this.productosMostrar = []
     
-  
+    this.catalogoMostrar.forEach(producto => {
+      
+      if(producto.nombre.toUpperCase().includes(evento.toUpperCase())){
+
+        this.productosMostrar.push(producto)
+
+      }
+
+    });
+
+    if(evento == ""){
+      this.productosMostrar = []
+    }
+
   }
 
 }

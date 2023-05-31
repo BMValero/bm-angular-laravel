@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertasService } from 'src/app/services/alertas.service';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -19,7 +21,7 @@ export class CompraComponent {
   productosPedidoNombreYTalla : any
   costeTotal = "0"
 
-  constructor(private fb : FormBuilder , private apiService : ApiService){
+  constructor(private fb : FormBuilder , private apiService : ApiService, private router: Router, private alertService : AlertasService){
 
     this.pagoForm = this.fb.group({
 
@@ -35,8 +37,6 @@ export class CompraComponent {
       this.apiService.obtenerDatosCliente(this.token).subscribe((res) => {
 
         this.datosCliente = res
-
-        console.log(this.datosCliente)
 
       })
 
@@ -65,13 +65,28 @@ export class CompraComponent {
       let objPedido = {
 
         "token_usuario" : `${this.token}`,
-        "productos" : `${this.productosPedidoNombreYTalla}`
-
+        "productos" : `${this.productosPedidoNombreYTalla}`,
+        "coste_total" : `${this.costeTotal}`
       }
 
-      this.apiService.realizarPedido(objPedido).subscribe((res) => {
+      this.apiService.realizarPedido(objPedido).subscribe((res : any) => {
 
-        console.log(res)
+        if(res.status == "ok"){
+
+          localStorage.removeItem("cesta")
+          localStorage.removeItem("costeTotal")
+
+          setTimeout(() => {
+            location.reload();
+          }, 100);
+
+          this.router.navigate([`/cuenta/perfil/pedidos/${res.pedido_id}`])
+
+        } else if( res.status == "error"){
+
+          this.alertService.mostrarAlerta(`No hay suficiente stock del producto : ${res.producto}` , 10000 , false);
+
+        }
 
       })
 

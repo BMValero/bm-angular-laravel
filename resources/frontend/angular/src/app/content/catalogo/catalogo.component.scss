@@ -15,16 +15,21 @@ img{
     box-shadow: 0px 1px 1px 1px rgba(105, 105, 105, 0.2);
 }
 
+.filtros{
+    background-color: white;
+}
 
 .catalogo{
     position: relative;
     top:35px;
     height: 100%;
     padding-bottom: 150px;
+    background-color: #7b7b7b;
+    background-image: linear-gradient(0deg, #7b7b7b 0%, #ffffff 100%);
 }
 
 .pastilla-catalogo{
-    background-color: rgba(231, 231, 231, 0.384);
+    background-color: rgba(238, 238, 238, 0.548);
     box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.2);
     height: 120vh;
 }

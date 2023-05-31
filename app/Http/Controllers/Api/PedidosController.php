@@ -7,8 +7,10 @@ use App\Models\EntregaDireccione;
 use App\Models\FacturacionDireccione;
 use App\Models\Token;
 use App\Models\Usuario;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
+use App\Models\Producto;
 
 class PedidosController extends Controller
 {
@@ -27,7 +29,52 @@ class PedidosController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+
+        $token = Token::where('id' , $request->input('token_usuario'))->first();
+
+        $usuario = Usuario::where('id' , $token->usuario_id)->first();
+
+        $pedido = new Pedido();
+        $pedido->fecha = Carbon::now();
+        $pedido->direccion_entrega = "";
+        $pedido->direccion_facturacion = "";
+        $pedido->coste_total = $request->input('coste_total');
+        $pedido->usuario_id = $usuario->id;
+        $pedido->save();
+
+        $arrayProductos = explode("," , $request->input('productos'));
+
+        $arrayProductosPedido = [];
+
+        for ($i=0; $i < count($arrayProductos); $i++) {
+
+            $nombreYTallaProducto = explode(">",$arrayProductos[$i]);
+            
+            $producto = Producto::where('nombre' , $nombreYTallaProducto[0])->where('talla' , $nombreYTallaProducto[1])->where('pedido_id' , null)->first();
+
+            if($producto == null){
+
+                for($i=0; $i < count($arrayProductosPedido); $i++) {
+
+                    $arrayProductosPedido[$i]->pedido_id = null;
+                    $arrayProductosPedido[$i]->save();
+
+                }
+
+                $pedido->delete();
+                return response()->json(['status' => 'error' , 'producto' => $nombreYTallaProducto[0]]);
+            }
+
+            $producto->pedido_id = $pedido->id;
+            $producto->save();
+
+            $pedido->productos()->save($producto);
+
+            $arrayProductosPedido[] = $producto;
+
+        }
+
+        return response()->json(['status' => 'ok' , 'pedido_id' => $pedido->id]);
     }
 
     /**

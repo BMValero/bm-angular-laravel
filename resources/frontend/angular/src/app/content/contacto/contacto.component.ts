@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertasService } from 'src/app/services/alertas.service';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ContactoComponent {
 
   contactoForm !: FormGroup
 
-  constructor(private apiService : ApiService , private fb : FormBuilder , private router : Router){
+  constructor(private apiService : ApiService , private fb : FormBuilder , private router : Router , private alertService : AlertasService){
 
     this.contactoForm = this.fb.group({
 
@@ -46,9 +47,14 @@ export class ContactoComponent {
         console.log(this.respuesta)
 
         if(this.respuesta.status == "ok"){
-          //TODO : AÑADIR NOTIFICACIÓN SLIDE DE ENVIADO CON ÉXITO
+
+          console.log("Mensaje correcto")
+
+          this.alertService.mostrarAlerta("El mensaje ha sido enviado." , 3000 , true);
+
         }else if (this.respuesta.status == "error"){
-          //TODO : AÑADIR NOTIFICACIÓN SLIDE DE FALLO AL ENVIAR
+
+          this.alertService.mostrarAlerta("El mensaje no ha podido ser enviado." , 3000 , false);
         }
 
       });

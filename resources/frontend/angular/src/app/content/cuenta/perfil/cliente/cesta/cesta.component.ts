@@ -101,6 +101,7 @@ export class CestaComponent implements OnInit{
 
         localStorage.setItem("cesta" , arrayProductosCesta.join("///"))
 
+        break
       }
       
     }

@@ -9,6 +9,15 @@
   display: flex;
 }
 
+.alerta{
+  position: absolute;
+  right: 1%;
+  top: 10%;
+  width: 15%;
+  text-align: center;
+  z-index: 1;
+}
+
 
 @media (max-width: 767px) {
  

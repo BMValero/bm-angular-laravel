@@ -1,5 +1,7 @@
 <app-header></app-header>
 
+<div class="alert alert-success alerta" role="alert" *ngIf="showAlertCorrecta">{{mensaje}}</div>
+<div class="alert alert-danger alerta" role="alert" *ngIf="showAlertIncorrecta">{{mensaje}}</div>
 <app-content class="flex-grow-1 contenido"></app-content>
 
 <app-footer></app-footer>

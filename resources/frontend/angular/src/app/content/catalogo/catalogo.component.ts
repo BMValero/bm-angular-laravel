@@ -24,6 +24,15 @@ export class CatalogoComponent implements OnInit{
 
   constructor(private router: Router, private apiService : ApiService, private fb : FormBuilder){
 
+    let filtros = localStorage.getItem("filtros")
+
+    if(!filtros){
+
+      filtros = "nombre///asc///00.00///00.00///XS,S,M,L,XL,X"
+
+      localStorage.setItem("filtros" , filtros)
+    }
+
     let filtrosAplicados = localStorage.getItem("filtros").split("///")
 
     this.filtrosForm = this.fb.group({
@@ -287,6 +296,7 @@ export class CatalogoComponent implements OnInit{
       }
     }
 
+
     if(this.filtrosForm.controls['precioDesde'].value == ""){
       this.filtrosForm.controls['precioDesde'].setValue('00.00')
     }
@@ -296,7 +306,11 @@ export class CatalogoComponent implements OnInit{
     }
 
     if(filtroTallas.length == 0){
-      filtroTallas = ['XS','S','M','L','XL']
+      filtroTallas = ['XS','S','M','L','XL','X']
+    }
+
+    if(filtroTallas.length == 5){
+      filtroTallas.push("X")
     }
 
     let stringFiltros = `${this.filtrosForm.controls['ordenarTipo'].value}///${this.filtrosForm.controls['ordenarDireccion'].value}///${this.filtrosForm.controls['precioDesde'].value}///${this.filtrosForm.controls['precioHasta'].value}///${filtroTallas.join(",")}`

@@ -25,8 +25,21 @@
                 </li>
             </ul>
 
-            <!-- TODO : CREAR BÚSQUEDA DINÁMICA DE PRODUCTOS -->
-            <input class="form-control mr-sm-2 px-4 mx-4" type="search" placeholder="Buscar productos" aria-label="Search" style="height: 35px;">
+            <div class="w-100 pe-5">
+                <input class="form-control mr-sm-2 px-4 mx-4 text-center" type="search" placeholder="Buscar productos" aria-label="Search" style="height: 35px;" (ngModelChange)="buscarProducto($event)" [(ngModel)]="textoProducto">
+                <div class="productos-busqueda">
+                    <ul class="list-group">
+                        <ng-container *ngFor="let producto of productosMostrar">
+                            <a href="/catalogo/{{producto.nombre}}">
+                                <li class="list-group-item text-center">
+                                    {{producto.nombre}}
+                                </li>
+                            </a>
+                        </ng-container>
+                        
+                    </ul>
+                </div>
+            </div>
             
             <form class="form-inline my-2 my-lg-0">
                 <span class="text-success mr-3 px-2" *ngIf="controlAdmin == true">Administrador</span>

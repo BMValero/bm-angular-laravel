@@ -29,11 +29,11 @@ class ContactoController extends Controller
             
         } catch (\Throwable $th) {
 
-            return response()->json(['error' => $th]);
+            return response()->json(['status' => 'error' , 'message' => $th]);
 
         }
 
-        return response()->json(['ok' => 'Email enviado']);
+        return response()->json(['status' => 'ok' , 'message' => 'Email enviado']);
     }
 
     /**
