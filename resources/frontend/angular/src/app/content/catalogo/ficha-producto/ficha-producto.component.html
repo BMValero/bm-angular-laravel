@@ -3,22 +3,26 @@
 
         <div class="menu">
 
-            <div class="d-flex justify-content-center align-items-end menu-producto gap-3">
-                <a href="/catalogo" class="border-bottom pb-2 link-secondary">Todo el catálogo</a>
-                <span class="border-right barra-menu"></span>
-                <a href="/catalogo/gorras" class="border-bottom pb-2 link-secondary">Gorras</a>
-                <a href="/catalogo/camisetas" class="border-bottom pb-2 link-secondary">Camisetas</a>
-                <a href="/catalogo/sudaderas" class="border-bottom pb-2 link-secondary">Sudaderas</a>
+            <div class="d-flex justify-content-center menu-producto">
+                <div class="d-flex justify-content-center gap-3 primera-parte-menu-catalogo">
+                    <a href="/catalogo" class="border-bottom pb-2 link-secondary">Todo el catálogo</a>
+                    <span class="border-right barra-menu"></span>
+                </div>
+                <div class="d-flex justify-content-center align-items-end gap-3 segunda-parte-menu-catalogo">
+                    <a href="/catalogo/gorras" class="border-bottom pb-2 link-secondary">Gorras</a>
+                    <a href="/catalogo/camisetas" class="border-bottom pb-2 link-secondary">Camisetas</a>
+                    <a href="/catalogo/sudaderas" class="border-bottom pb-2 link-secondary">Sudaderas</a>
+                </div>
             </div>
 
-            <span class="float-left mb-3"><a (click)="volverAtras()" href="" class="link-secondary">&lt;&lt;&lt; Volver</a></span>
+            <span class="float-left mb-3 link-volver"><a (click)="volverAtras()" href="" class="link-secondary">&lt;&lt;&lt; Volver</a></span>
             
         </div>
 
         
 
         <div class="caja-producto rounded pb-1 pt-2">
-            <div class="col d-flex gap-2">
+            <div class="col d-flex gap-2 contenido-ficha-producto">
 
                 <div id="carouselExampleControls" class="carousel slide col d-flex justify-content-center align-items-center" data-ride="carousel">
                     <div class="carousel-inner sombra rounded">
@@ -53,7 +57,7 @@
                         
                         
                     </div>
-                    <div class="pastilla-comprar d-flex flex-column align-items-end card p-4">
+                    <div class="pastilla-comprar d-flex flex-column align-items-end card">
                         <div class="d-flex w-100 justify-content-between pb-2">
                             <div>
                                 <span>TALLA : </span>

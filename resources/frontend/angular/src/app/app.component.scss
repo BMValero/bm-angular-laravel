@@ -25,6 +25,12 @@
     height: auto;
   }
 
+  .alerta{
+    position: fixed;
+    right: 10%;
+    width: 25%;
+  }
+
 }
 
 @media (min-width: 768px) and (max-width: 923px) {

@@ -4,11 +4,25 @@ section{
     padding-bottom: 20px;
 }
 
+.seccion-contenido{
+    display: flex;
+}
+
 .slider {
     padding-top: 15px;
     height: 60vh;
     background-color: white;
     background-image: url("/assets/content/landpage-principal.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.slider-movil{
+    display: none;
+    padding-top: 15px;
+    height: 60vh;
+    background-color: white;
+    background-image: url("/assets/content/landpage-movil.png");
     background-size: cover;
     background-position: center;
 }
@@ -24,4 +38,23 @@ section{
 .img-section{
     width: 450px;
     height: auto;
+}
+
+@media (max-width: 767px) {
+    .slider{
+        display: none;
+    }
+
+    .slider-movil{
+        display: block;
+    }
+
+    .seccion-contenido{
+        flex-direction: column;
+    }
+
+    .invertido{
+        flex-direction: column-reverse;
+    }
+
 }

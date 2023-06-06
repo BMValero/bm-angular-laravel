@@ -25,6 +25,10 @@ footer {
   padding-right: 10%;
 }
 
+.contenedor-redes{
+  justify-content: end;
+}
+
 img{
   height: 40px;
   width: 120px;
@@ -38,6 +42,38 @@ img{
 .img-icon{
   height: 35px;
   width: auto;
+}
+
+@media (max-width: 767px) {
+
+  .footer-top{
+    height: auto;
+  }
+  
+  .footer-top-content{
+    flex-direction: column;
+  }
+
+  .footer-bottom{
+    height: auto;
+  }
+
+  .footer-bottom-content{
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contenedor-logo{
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contenedor-redes{
+    justify-content: center;
+  }
+
 }
 
 @media (min-width: 1921px){

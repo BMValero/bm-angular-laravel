@@ -2,3 +2,11 @@ cdk-virtual-scroll-viewport{
 
     height: 550px;
 }
+
+@media (max-width: 767px) {
+
+    h3{
+        padding-bottom: 10px;
+    }
+    
+}

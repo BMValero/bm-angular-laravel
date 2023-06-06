@@ -2,17 +2,21 @@
     <div class="col">
         <div class="d-flex flex-column justify-content-center align-items-center catalogo">
 
-            <div class="d-flex justify-content-center align-items-end gap-3 mb-4">
-                <a href="/catalogo" class="border-bottom pb-2 link-secondary">Todo el catálogo</a>
-                <span class="border-right barra-menu"></span>
-                <a href="/catalogo/gorras" class="border-bottom pb-2 link-secondary">Gorras</a>
-                <a href="/catalogo/camisetas" class="border-bottom pb-2 link-secondary">Camisetas</a>
-                <a href="/catalogo/sudaderas" class="border-bottom pb-2 link-secondary">Sudaderas</a>
+            <div class="contenedor-menu-catalogo">
+                <div class="d-flex justify-content-center align-items-end gap-3 primera-parte-menu-catalogo">
+                    <a href="/catalogo" class="border-bottom pb-2 link-secondary">Todo el catálogo</a>
+                    <span class="border-right barra-menu"></span>
+                </div>
+                <div class="d-flex justify-content-center align-items-end gap-3 segunda-parte-menu-catalogo">
+                    <a href="/catalogo/gorras" class="border-bottom pb-2 link-secondary">Gorras</a>
+                    <a href="/catalogo/camisetas" class="border-bottom pb-2 link-secondary">Camisetas</a>
+                    <a href="/catalogo/sudaderas" class="border-bottom pb-2 link-secondary">Sudaderas</a>
+                </div>
             </div>
             
-            <div class="p-3 d-flex gap-2 col-9 pastilla-catalogo border rounded">
+            <div class="d-flex gap-2 pastilla-catalogo border rounded">
 
-                <form class="p-3 col-2 border rounded filtros sombra-suave list-group " [formGroup]="filtrosForm" (ngSubmit)="filtrar()">
+                <form class="p-3 border rounded filtros sombra-suave list-group " [formGroup]="filtrosForm" (ngSubmit)="filtrar()">
 
                     <span class="pb-2">Ordenar por :</span>
 
@@ -130,11 +134,11 @@
                     <button type="submit" class="btn btn-secondary">Aplicar</button>
                 </form>
 
-                <div class="p-3 col-10 border rounded sombra-suave">
+                <div class="p-3 border rounded sombra-suave contenedor-productos-catalogo">
 
                     <cdk-virtual-scroll-viewport itemSize="10">
 
-                        <div *ngIf="this.controlCatalogo == true" class="d-flex flex-wrap gap-2">
+                        <div *ngIf="this.controlCatalogo == true" class="d-flex flex-wrap productos-catalogo">
 
                             <div *ngFor="let producto of catalogoMostrar" class="card cards-productos">
                                 <img class="card-img-top" [src]="producto.ruta_imagen + 'delante.png'" alt="Card image cap">

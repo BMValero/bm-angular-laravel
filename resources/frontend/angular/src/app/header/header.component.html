@@ -26,7 +26,7 @@
             </ul>
 
             <div class="w-100 pe-5">
-                <input class="form-control mr-sm-2 px-4 mx-4 text-center" type="search" placeholder="Buscar productos" aria-label="Search" style="height: 35px;" (ngModelChange)="buscarProducto($event)" [(ngModel)]="textoProducto">
+                <input class="form-control mr-sm-2 px-4 mx-4 text-center buscador-productos" type="search" placeholder="Buscar productos" aria-label="Search" style="height: 35px;" (ngModelChange)="buscarProducto($event)" [(ngModel)]="textoProducto">
                 <div class="productos-busqueda">
                     <ul class="list-group">
                         <ng-container *ngFor="let producto of productosMostrar">
@@ -43,8 +43,8 @@
             
             <form class="form-inline my-2 my-lg-0">
                 <span class="text-success mr-3 px-2" *ngIf="controlAdmin == true">Administrador</span>
-                <button class="btn btn-success mr-4 px-2 position-relative" *ngIf="controlAdmin == false">
-                    <a class="text-white d-flex justify-content-center align-items-center gap-2" href="/cesta">
+                <button class="btn btn-success mr-4 px-2 position-relative boton-cesta" *ngIf="controlAdmin == false">
+                    <a class="text-white d-flex justify-content-center align-items-center gap-2 cesta" href="/cesta">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
@@ -57,8 +57,10 @@
                 </button>
                 
             </form>
-            <app-login-dropdown *ngIf="controlLogin == false"></app-login-dropdown>
-            <app-cuenta-dropdown *ngIf="controlLogin == true"></app-cuenta-dropdown>
+            <div class="desplegable">
+                <app-login-dropdown *ngIf="controlLogin == false"></app-login-dropdown>
+                <app-cuenta-dropdown *ngIf="controlLogin == true"></app-cuenta-dropdown>
+            </div>
         </div>
     </nav>
   </header>

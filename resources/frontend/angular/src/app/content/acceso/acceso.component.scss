@@ -6,7 +6,12 @@
 
 
 @media (max-width: 767px) {
-    /* reglas CSS para pantallas pequeñas */
+    
+    .contenedor-slider{
+        display: none;
+    }
+
+    
   }
 
 @media (min-width: 768px) and (max-width: 991px) {

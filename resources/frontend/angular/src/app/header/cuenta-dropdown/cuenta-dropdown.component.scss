@@ -2,3 +2,20 @@
     height: 30px;
     width: 80px;
 }
+
+
+
+@media (max-width: 767px) {
+    
+    .dropdown{
+        margin-bottom: 15px;
+    }
+
+    .desplegable{
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        width: 260px;
+    }
+
+}

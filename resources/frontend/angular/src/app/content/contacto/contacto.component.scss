@@ -11,15 +11,65 @@ textarea{
 .pastilla-contacto{
     background-color: rgba(247, 247, 247, 0.911);
     box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.2);
-    height: 65vh;
+    height: 100%;
+}
+
+.contenedor-slider{
+    width: 50%;
+}
+
+.contenedor-form{
+    width: 50%;
+}
+
+.formulario{
+    width: 50%;
+}
+
+@media (max-width: 767px) {
+
+    .contacto{
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+
+    .contenedor-slider{
+        display: none;
+    }
+
+    .contenedor-form{
+        width: 100%;
+    }
+
+    .formulario{
+        width: 90%;
+        height: 100%;
+    }
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .slider {
-        height: 72vh;
-        background-image: url("/assets/content/contacto-slider.png");
-        background-size: cover;
-        background-position: center;
+
+    .contacto{
+        display: block;
+        width: 100%;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .contenedor-slider{
+        display: none;
+    }
+
+    .contenedor-form{
+        width: 100%;
+    }
+
+    .formulario{
+        width: 90%;
+        height: 100%;
     }
 }
 
@@ -33,7 +83,8 @@ textarea{
     }
 
     .formulario{
-        height: 66vh;
+        height: 75vh;
+        width: 65%;
     }
 
 }

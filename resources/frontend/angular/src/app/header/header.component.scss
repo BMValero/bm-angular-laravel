@@ -21,8 +21,53 @@ a{
 }
 
 .productos-busqueda{
+    z-index: 1;
     width: 56%;
     position: absolute;
-    top:65px;
+    top:210px;
+    left: 50px;
     padding-left: 25px;
+}
+
+@media (max-width: 767px) {
+    .navbar{
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+
+    .desplegable{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dropdown-menu{
+        width: 250px;
+    }
+
+    .navegador{
+        display: flex;
+        align-items: center;
+    }
+
+    li{
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+
+    .buscador-productos{
+        margin-top: 5px;
+    }
+
+    .cesta{
+        width: 240px;
+    }
+
+    form{
+        justify-content: center;
+    }
+    
 }
