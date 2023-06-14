@@ -40,7 +40,19 @@ export class GestionUsuariosComponent {
 
   }
 
-  eliminarUsuario(usuario_id : number){
+  eliminarUsuario(usuario_id : string){
+
+    this.apiService.eliminarUsuario(usuario_id).subscribe((res : any) => {
+    
+      console.log(res)
+
+      if(res.status == "ok"){
+
+        location.reload();
+
+      }
+      
+      })
 
   }
 

@@ -44,6 +44,12 @@ export class ApiService {
     return this.http.put(url,datosCliente)
   }
 
+  eliminarUsuario(id : string){
+    let url : string = `http://127.0.0.1:8000/api/datos/eliminar/${id}`;
+
+    return this.http.delete(url)
+  }
+
   obtenerProductos(){
     let url : string = `http://127.0.0.1:8000/api/productos`;
 

@@ -16,6 +16,10 @@ return new class extends Migration
             $table->id('id');
             $table->string('nombre');
             $table->string('apellidos');
+            $table->string('ciudad')->nullable();
+            $table->string('cp')->nullable();
+            $table->string('direccion_entrega')->nullable();
+            $table->string('direccion_facturacion')->nullable();
             $table->integer('telefono');
             $table->string('email')->unique();
             $table->string('password');

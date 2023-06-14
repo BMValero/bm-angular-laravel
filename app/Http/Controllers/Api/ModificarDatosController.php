@@ -93,7 +93,15 @@ class ModificarDatosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = Usuario::findOrFail($id);
+
+        if ($user) {
+            $user->delete();
+
+            return response()->json(['status' => 'ok','msg' => 'Usuario eliminado.']);
+        }
+
+        return response()->json(['status' => 'error','msg' => 'Usuario no encontrado.']);
     }
 
     public function modificarDatos(Request $request, string $token){

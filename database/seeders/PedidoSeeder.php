@@ -28,7 +28,8 @@ class PedidoSeeder extends Seeder
         $pedido->fecha = Carbon::now();
         $pedido->direccion_entrega = 'Calle falsa 3456';
         $pedido->direccion_facturacion = 'Calle falsa 3456';
-        $pedido->coste_total = 54.98;
+        $pedido->coste_total = 49.98;
+        $pedido->usuario_id = 2;
         $pedido->save();
         
     }

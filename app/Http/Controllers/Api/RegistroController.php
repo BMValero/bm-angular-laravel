@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -43,16 +44,7 @@ class RegistroController extends Controller
 
         } else {
 
-            $uuid = Str::uuid();
-
-            $existingUuid = Usuario::where('id', $uuid)->exists();
-            while ($existingUuid) {
-                $uuid = Str::uuid();
-                $existingUuid = Usuario::where('id', $uuid)->exists();
-            }
-
             $usuario = new Usuario;
-            $usuario->id = $uuid;
             $usuario->nombre = $request->input('nombre');
             $usuario->apellidos = $request->input('apellidos');
             $usuario->ciudad = $request->input('ciudad');
@@ -64,6 +56,10 @@ class RegistroController extends Controller
             $usuario->password = bcrypt($request->input('password'));
         
             $usuario->save();
+
+            $role = Role::find(2);
+
+            $usuario->roles()->attach($role);
 
             return response()->json( ['status' => 'ok','msg' => 'Usuario creado.']);
         }

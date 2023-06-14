@@ -14,6 +14,51 @@ class ProductoSeeder extends Seeder
      */
     public function run(): void
     {
+
+        $producto = new Producto();
+        $producto->tipo = 'camisetas';
+        $producto->nombre = 'Original White Tee';
+        $producto->edicion ='Black & White';
+        $producto->descripcion = 'Camiseta de tejido negro con letras en color blanco.';
+        $producto->talla = 'L';
+        $producto->precio = 14.99;
+        $producto->ruta_imagen = '/assets/BW/camisetas/Original-White/';
+        $producto->pedido_id = 1;
+        $producto->save();
+
+        $producto = new Producto();
+        $producto->tipo = 'camisetas';
+        $producto->nombre = 'Original Black Tee';
+        $producto->edicion ='Black & White';
+        $producto->descripcion = 'Camiseta de tejido blanco con letras en color negro.';
+        $producto->talla = 'XS';
+        $producto->precio = 14.99;
+        $producto->ruta_imagen = '/assets/BW/camisetas/Original-Black/';
+        $producto->pedido_id = 1;
+        $producto->save();
+
+        $producto = new Producto();
+        $producto->tipo = 'camisetas';
+        $producto->nombre = 'Original White Tee';
+        $producto->edicion ='Black & White';
+        $producto->descripcion = 'Camiseta de tejido negro con letras en color blanco.';
+        $producto->talla = 'M';
+        $producto->precio = 14.99;
+        $producto->ruta_imagen = '/assets/BW/camisetas/Original-White/';
+        $producto->pedido_id = 2;
+        $producto->save();
+
+        $producto = new Producto();
+        $producto->tipo = 'sudaderas';
+        $producto->nombre = 'Original White Hoodie';
+        $producto->edicion ='Black & White';
+        $producto->descripcion = 'Sudadera de tejido negro con letras en color blanco.';
+        $producto->talla = 'S';
+        $producto->precio = 34.99;
+        $producto->ruta_imagen = '/assets/BW/sudaderas/Original-White/';
+        $producto->pedido_id = 2;
+        $producto->save();
+
         $producto = new Producto();
         $producto->tipo = 'camisetas';
         $producto->nombre = 'Original White Tee';

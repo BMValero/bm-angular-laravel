@@ -37,6 +37,7 @@ Route::controller(ModificarDatosController::class)->group(function(){
     Route::get('/datos/usuarios/{token}' , 'show')->middleware('verificar-cliente','verificar-pertenencia-datos-cliente');
     Route::put('/datos/usuarios/modificar' , 'update')->middleware('verificar-admin');
     Route::put('/datos/usuarios/modificar/{token}', 'modificarDatos')->middleware('verificar-cliente' , 'verificar-pertenencia-modificar-datos-cliente');
+    Route::delete('/datos/eliminar/{id}' , 'destroy')->middleware('verificar-admin');
 });
 Route::controller(ProductosController::class)->group(function(){
     Route::get('/productos' ,'index');
